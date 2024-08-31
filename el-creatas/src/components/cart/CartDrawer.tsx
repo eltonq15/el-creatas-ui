@@ -20,6 +20,13 @@ import {
 import { Button } from "../shadcn/components/ui/button";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import { Input } from "../shadcn/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../shadcn/components/ui/select";
 
 export const CartDrawer = () => {
   const { cartProducts, setCartProducts, totalPrice } = useCartStore();
@@ -45,21 +52,29 @@ export const CartDrawer = () => {
               <TableCell className="font-medium">{product.name}</TableCell>
               <TableCell>{formatToEuros(product.price)}</TableCell>
               <TableCell>
-                <Input
-                  type="number"
-                  value={product.quantity}
-                  onChange={(e) => {
-                    product.quantity = parseInt(e.target.value);
+                <Select
+                  value={String(product.quantity)}
+                  onValueChange={(value) => {
+                    product.quantity = parseInt(value);
                     setCartProducts([...cartProducts]);
-                    if (e.target.value === "0") {
+                    if (value === "0") {
                       setCartProducts(
                         cartProducts.filter((p) => p.id !== product.id)
                       );
                     }
                   }}
-                  min={0}
-                  step={1}
-                />
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Quantidade" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Array.from({ length: 31 }, (_, i) => i).map((i) => (
+                      <SelectItem key={i} value={i.toString()}>
+                        {i || "Remover item"}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </TableCell>
               <TableCell className="text-right">
                 {formatToEuros(product.quantity * product.price)}
@@ -79,7 +94,7 @@ export const CartDrawer = () => {
       <SheetFooter>
         <SheetClose asChild>
           <Link to="/checkout">
-            <Button color="#d6b8a9" type="submit">
+            <Button className="mt-4" color="#d6b8a9" type="submit">
               Continuar
             </Button>
           </Link>

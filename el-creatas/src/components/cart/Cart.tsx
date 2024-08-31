@@ -1,4 +1,4 @@
-import { CartIcon } from "../../assets/CartIcon";
+import { CartIcon } from "../../assets/icons/CartIcon";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import { Sheet, SheetTrigger } from "../shadcn/components/ui/sheet";
 import { CartDrawer } from "./CartDrawer";
