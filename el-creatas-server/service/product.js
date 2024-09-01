@@ -22,6 +22,15 @@ const getProductById = async (req, res) => {
   }
 };
 
+const getAllProducts = async (req, res) => {
+  try {
+    const product = await req.prisma.product.findMany();
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const updateProductById = async (req, res) => {
   const { id } = req.params;
   const { name, description, price, size } = req.body;
@@ -49,6 +58,7 @@ const deleteProductById = async (req, res) => {
 };
 
 module.exports = {
+  getAllProducts,
   getProductById,
   createProduct,
   updateProductById,

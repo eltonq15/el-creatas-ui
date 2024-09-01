@@ -23,6 +23,7 @@ const {
   deleteProductById,
   createProduct,
   getProductById,
+  getAllProducts,
   updateProductById,
 } = require("./service/product");
 const {
@@ -56,6 +57,7 @@ app.post("/users", createUser);
 
 app.get("/addresses/:id", getAddressById);
 app.get("/payments/:id", getPaymentById);
+app.get("/products", getAllProducts);
 app.get("/products/:id", getProductById);
 app.get("/purchases/:id", getOrderById);
 app.get("/users/:id", getUserById);
