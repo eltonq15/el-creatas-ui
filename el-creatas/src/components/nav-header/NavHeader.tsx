@@ -5,6 +5,7 @@ import { useIsMobile } from "../../hooks/use-is-mobile";
 import { MobileMenu } from "../mobile-menu/MobileMenu";
 
 import "./styles.scss";
+import { SearchIcon } from "../../assets/SearchIcon";
 
 export const NavHeader = () => {
   const isMobile = useIsMobile();
@@ -19,7 +20,10 @@ export const NavHeader = () => {
           <NavLink to="contato">Contato</NavLink>
         </ul>
       )}
-      <Cart />
+      <span style={{ display: "flex", gap: "1rem", flexDirection: "row" }}>
+        <SearchIcon />
+        <Cart />
+      </span>
     </nav>
   );
 };
