@@ -1,0 +1,10 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+.image-gallery-slide {
+  transform: unset !important;
+  opacity: 0 !important;
+}
+
+.image-gallery-center {
+  opacity: 1 !important;
+}

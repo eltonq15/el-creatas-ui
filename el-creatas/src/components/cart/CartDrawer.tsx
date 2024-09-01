@@ -19,7 +19,6 @@ import {
 } from "../shadcn/components/ui/table";
 import { Button } from "../shadcn/components/ui/button";
 import { useCartStore } from "../../stores/cart-store/cart-store";
-import { Input } from "../shadcn/components/ui/input";
 import {
   Select,
   SelectContent,

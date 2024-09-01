@@ -1,21 +1,24 @@
 import { NavLink } from "react-router-dom";
-import { useCartStore } from "../../stores/cart-store/cart-store";
 import { Logo } from "../logo/Logo";
+import { Cart } from "../cart/Cart";
+import { useIsMobile } from "../../hooks/use-is-mobile";
+import { MobileMenu } from "../mobile-menu/MobileMenu";
 
 import "./styles.scss";
-import { Cart } from "../cart/Cart";
 
 export const NavHeader = () => {
-  const { cartProducts } = useCartStore();
+  const isMobile = useIsMobile();
   return (
     <nav className="nav-header" role="navigation">
+      {isMobile && <MobileMenu />}
       <Logo />
-
-      <ul>
-        <NavLink to="produtos">Produtos</NavLink>
-        <NavLink to="sobre">Sobre</NavLink>
-        <NavLink to="contato">Contato</NavLink>
-      </ul>
+      {!isMobile && (
+        <ul className="nav-links">
+          <NavLink to="produtos">Produtos</NavLink>
+          <NavLink to="sobre">Sobre</NavLink>
+          <NavLink to="contato">Contato</NavLink>
+        </ul>
+      )}
       <Cart />
     </nav>
   );
