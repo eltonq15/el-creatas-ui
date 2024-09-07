@@ -1,0 +1,54 @@
+.nav-header {
+  align-items: center;
+  background-color: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-style: italic;
+  font-weight: 400;
+  height: 200px;
+  justify-content: center;
+  left: 0;
+  padding: 24px 48px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  transition: all 0.4s ease-in-out;
+  position: fixed;
+  right: 48px;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+
+  &.scrolled,
+  &:hover {
+    background-color: #fff;
+    border: 2px solid #ece8df;
+  }
+
+  @media (max-width: 768px) {
+    height: 100px;
+  }
+
+  __active {
+    font-weight: 700;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    gap: 24px;
+
+    a {
+      color: #000;
+      text-decoration: none;
+
+      &.active {
+        font-weight: 700;
+      }
+    }
+  }
+}

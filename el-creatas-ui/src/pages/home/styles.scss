@@ -1,0 +1,66 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+
+  .best-sellers-container {
+    width: 100%;
+    overflow-x: hidden;
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 15px;
+      padding: 24px 0;
+      box-shadow: inset 0 0 20px #ede8de;
+      z-index: 200;
+    }
+
+    .best-sellers-slider {
+      height: 472px;
+      background-color: #ede8de;
+      padding: 36px;
+      display: flex;
+      overflow-x: scroll;
+
+      .best-sellers-card-container {
+        display: flex;
+        gap: 24px;
+
+        .best-sellers-card {
+          width: 300px;
+          height: 400px;
+          padding: 24px;
+          background-color: #fff;
+          box-shadow: 0 0 30px rgba(132, 124, 102, 0.1);
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          cursor: pointer;
+
+          .card-details {
+            padding-top: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .price {
+              font-size: 24px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              color: gray;
+            }
+          }
+        }
+      }
+    }
+  }
+}
