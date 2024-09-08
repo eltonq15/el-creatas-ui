@@ -6,9 +6,12 @@ import "./styles.scss";
 export const Home = () => {
   return (
     <div className="home-container">
-      <ImageSlider images={images} />
+      {/* <ImageSlider images={images} /> */}
+      <div className="image-container">
+        <img src="/background-2.jpg" alt="Background" />
+      </div>
       <div className="best-sellers-container">
-        <h1>Best Sellers</h1>
+        <h1>Home & Decor</h1>
         <div className="best-sellers-slider">
           <div className="best-sellers-card-container">
             <div className="best-sellers-card">
@@ -67,6 +70,10 @@ export const Home = () => {
             </div>
           </div>
         </div>
+        <h1>Where minimalist style takes shape in every detail</h1>
+      </div>
+      <div className="image-container">
+        <img src="/background-2.jpg" alt="Background" />
       </div>
     </div>
   );

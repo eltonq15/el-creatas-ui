@@ -4,21 +4,25 @@ import {
   SheetContent,
   SheetFooter,
 } from "../shadcn/components/ui/sheet";
-import { Button } from "../shadcn/components/ui/button";
+
+import "./styles.scss";
 
 export const MobileMenuDrawer = () => {
   return (
-    <SheetContent side="left">
+    <SheetContent id="mobile-menu-drawer" side="left">
       <SheetFooter>
         <SheetClose asChild>
           <Link to="/contato">CONTATO</Link>
         </SheetClose>
+        <hr />
         <SheetClose asChild>
           <Link to="/sobre">SOBRE</Link>
         </SheetClose>
+        <hr />
         <SheetClose asChild>
           <Link to="/produtos">PRODUTOS</Link>
         </SheetClose>
+        <hr />
         <SheetClose asChild>
           <Link to="/home">HOME</Link>
         </SheetClose>

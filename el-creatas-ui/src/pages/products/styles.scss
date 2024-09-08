@@ -1,9 +1,22 @@
-.product-card {
-  &:hover {
-    cursor: pointer;
-    border-color: #ece7dd;
-    box-shadow: 0 0 1em 0.5em #ece7dd;
-    transition: 0.5s;
-    transform: scale(1.02);
+.products-page-container {
+  .products-page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    min-height: 670px;
+    gap: 24px;
+    padding-bottom: 48px;
+    background-image: url("../../../public/background.jpg");
+  }
+
+  .product-card {
+    &:hover {
+      cursor: pointer;
+      border-color: #ece7dd;
+      box-shadow: 0 0 1em 0.5em #ece7dd;
+      transition: 0.5s;
+      transform: scale(1.02);
+    }
   }
 }

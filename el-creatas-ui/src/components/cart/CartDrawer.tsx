@@ -27,16 +27,17 @@ import {
   SelectValue,
 } from "../shadcn/components/ui/select";
 
+import "./styles.scss";
+
 export const CartDrawer = () => {
   const { cartProducts, setCartProducts, totalPrice } = useCartStore();
 
   return (
     <SheetContent>
       <SheetHeader>
-        <SheetTitle>Produto(s)</SheetTitle>
-        <SheetDescription>Reveja os itens em seu carrinho.</SheetDescription>
+        <SheetTitle id="cart-drawer-title">Meus Produtos</SheetTitle>
       </SheetHeader>
-      <Table>
+      <Table id="cart-drawer-table">
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Nome</TableHead>
@@ -93,8 +94,13 @@ export const CartDrawer = () => {
       <SheetFooter>
         <SheetClose asChild>
           <Link to="/checkout">
-            <Button className="mt-4" color="#d6b8a9" type="submit">
-              Continuar
+            <Button
+              id="cart-drawer-confirm-button"
+              className="mt-4"
+              color="#d6b8a9"
+              type="submit"
+            >
+              Finalizar compra
             </Button>
           </Link>
         </SheetClose>

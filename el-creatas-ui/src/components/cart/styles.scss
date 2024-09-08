@@ -19,7 +19,27 @@ span {
     border-radius: 50%;
     width: 16px;
     height: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Math, Arial, Helvetica, sans-serif;
     font-style: normal;
   }
+}
+
+#cart-drawer-title {
+  align-self: flex-start;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 16px 8px 0;
+}
+#cart-drawer-table {
+  font-size: 16px;
+  margin-top: 36px;
+  font-family: math;
+}
+
+#cart-drawer-confirm-button {
+  font-size: 16px;
+  margin-top: 28px;
+  font-family: math;
+  right: 24px;
+  position: fixed;
 }

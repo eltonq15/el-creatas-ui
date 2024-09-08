@@ -14,21 +14,10 @@ import { useGetProducts } from "../../hooks/use-get-products";
 import "./styles.scss";
 
 export const Products = () => {
-  const { data: products, isLoading } = useGetProducts();
+  const { data: products } = useGetProducts();
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "end",
-          minHeight: "600px",
-          gap: 24,
-          paddingBottom: 48,
-          backgroundImage: "url(/background.jpg)",
-        }}
-      >
+    <div className="products-page-container">
+      <div className="products-page-header">
         <h1>JESMONITE</h1>
         <h3 style={{ width: "80%", textAlign: "center" }}>
           O jesmonite é um material versátil, ecológico e durável, que permite
@@ -122,6 +111,6 @@ export const Products = () => {
           </Suspense>
         </div>
       </div>
-    </>
+    </div>
   );
 };
