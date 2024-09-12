@@ -4,6 +4,7 @@ import { NavHeader } from "./components/nav-header/NavHeader";
 import { Home } from "./pages/home/Home";
 import { Products } from "./pages/products/Products";
 import { Checkout } from "./pages/checkout/Checkout";
+import "@fontsource/inter";
 
 const App: React.FC = () => {
   return (
