@@ -7,10 +7,11 @@ import ContactsRoundedIcon from "@mui/icons-material/ContactsRounded";
 import LocalShippingRoundedIcon from "@mui/icons-material/LocalShippingRounded";
 import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import { Button, Stack, useTheme } from "@mui/joy";
-import { CheckoutStepperButtons } from "./CheckoutStepperButtons";
+import { useTheme } from "@mui/joy";
 import { PersonalDataForm } from "./PersonalDataForm";
 import { ShippingAddressForm } from "./ShippingAddressForm";
+import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
+import { FormProvider, useForm } from "react-hook-form";
 
 const stepperContainerStyle = {
   width: "100%",
@@ -67,7 +68,7 @@ const stepConfigs = {
 };
 
 export const CheckoutStepper = () => {
-  const [currentStep, setCurrentStep] = useState(0);
+  const { currentStep } = useCheckoutStore();
 
   const isActive = (step: number) => {
     return currentStep === step;
@@ -87,18 +88,11 @@ export const CheckoutStepper = () => {
     ];
   };
 
-  const handleNext = () => {
-    setCurrentStep((prev) => prev + 1);
-  };
-
-  const handleBack = () => {
-    setCurrentStep((prev) => prev - 1);
-  };
-
   const theme = useTheme();
+  const methods = useForm();
 
   return (
-    <>
+    <FormProvider {...methods}>
       <Stepper
         size="md"
         sx={{
@@ -208,15 +202,8 @@ export const CheckoutStepper = () => {
           )}
         </Step>
       </Stepper>
-      {isActive(0) && <PersonalDataForm goNextStep={handleNext} />}
-      {isActive(1) && (
-        <ShippingAddressForm goBackStep={handleBack} goNextStep={handleNext} />
-      )}
-      {/* <CheckoutStepperButtons
-        step={currentStep}
-        handleNext={handleNext}
-        handleBack={handleBack}
-      /> */}
-    </>
+      {isActive(0) && <PersonalDataForm />}
+      {isActive(1) && <ShippingAddressForm />}
+    </FormProvider>
   );
 };

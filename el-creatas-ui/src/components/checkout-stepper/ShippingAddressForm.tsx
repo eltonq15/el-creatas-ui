@@ -7,92 +7,115 @@ import {
   FormHelperText,
   Input,
   Button,
+  Box,
 } from "@mui/joy";
+import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 
 import "./styles.scss";
 
 const shippingAddressSchema = z.object({
-  street: z
-    .string()
-    .min(2, { message: "A rua deve ter pelo menos 2 caracteres" }),
-  number: z
-    .string()
-    .min(1, { message: "O número deve ter pelo menos 1 caractere" }),
-  city: z
-    .string()
-    .min(2, { message: "A cidade deve ter pelo menos 2 caracteres" }),
-  state: z
-    .string()
-    .min(2, { message: "O estado deve ter pelo menos 2 caracteres" }),
+  shippingAddress: z.string().min(4, {
+    message: "A morada de entrega deve ter pelo menos 4 caracteres",
+  }),
+  city: z.string().min(2, { message: "Cidade Inválida" }),
+  district: z.string().min(2, { message: "Distrito Inválido" }),
   zipCode: z.string().regex(/^\d{4}-\d{3}$/, {
-    message: "CEP inválido (deve estar no formato 0000-000)",
+    message: "Código postal inválido (deve estar no formato 0000-000)",
   }),
 });
 
 type ShippingAddress = z.infer<typeof shippingAddressSchema>;
 
-export const ShippingAddressForm = ({
-  goBackStep,
-  goNextStep,
-}: {
-  goBackStep: () => void;
-  goNextStep: () => void;
-}) => {
+export const ShippingAddressForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
   } = useForm<ShippingAddress>({
     resolver: zodResolver(shippingAddressSchema),
   });
 
-  const onSubmit = (data: ShippingAddress) => {
-    console.log(data);
-    goNextStep();
-  };
+  const { checkoutData, setCheckoutData, goPrevStep, goNextStep } =
+    useCheckoutStore();
 
   return (
-    <form className="shipping-address-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="shipping-address-form" onSubmit={handleSubmit(goNextStep)}>
       <FormControl>
-        <FormLabel htmlFor="street">Rua:</FormLabel>
-        <Input {...register("street")} />
-        {errors.street && (
-          <FormHelperText>{errors.street.message}</FormHelperText>
-        )}
-      </FormControl>
-
-      <FormControl>
-        <FormLabel htmlFor="number">Número:</FormLabel>
-        <Input {...register("number")} />
-        {errors.number && (
-          <FormHelperText>{errors.number.message}</FormHelperText>
+        <FormLabel htmlFor="shippingAddress">
+          Morada Completa (envio e faturação):
+        </FormLabel>
+        <Input
+          {...register("shippingAddress")}
+          placeholder="ex: Rua das Flores, 123 - Apto. 123"
+          defaultValue={checkoutData.shippingAddress}
+          onChange={(e) => {
+            setCheckoutData({ shippingAddress: e.target.value });
+            e.target.focus();
+          }}
+        />
+        {errors.shippingAddress && (
+          <FormHelperText>{errors.shippingAddress.message}</FormHelperText>
         )}
       </FormControl>
 
       <FormControl>
         <FormLabel htmlFor="city">Cidade:</FormLabel>
-        <Input {...register("city")} />
+        <Input
+          {...register("city")}
+          placeholder="ex: Porto"
+          defaultValue={checkoutData.city}
+          onChange={(e) => {
+            setCheckoutData({ city: e.target.value });
+            e.target.focus();
+          }}
+        />
         {errors.city && <FormHelperText>{errors.city.message}</FormHelperText>}
       </FormControl>
 
       <FormControl>
-        <FormLabel htmlFor="state">Estado:</FormLabel>
-        <Input {...register("state")} />
-        {errors.state && (
-          <FormHelperText>{errors.state.message}</FormHelperText>
+        <FormLabel htmlFor="district">Distrito:</FormLabel>
+        <Input
+          {...register("district")}
+          placeholder="ex: Porto"
+          defaultValue={checkoutData.district}
+          onChange={(e) => {
+            setCheckoutData({ district: e.target.value });
+            e.target.focus();
+          }}
+        />
+        {errors.district && (
+          <FormHelperText>{errors.district.message}</FormHelperText>
         )}
       </FormControl>
 
       <FormControl>
-        <FormLabel htmlFor="zipCode">CEP:</FormLabel>
-        <Input {...register("zipCode")} />
+        <FormLabel htmlFor="zipCode">Código postal:</FormLabel>
+        <Input
+          {...register("zipCode")}
+          placeholder="ex: 0000-000"
+          defaultValue={checkoutData.zipCode}
+          onChange={(e) => {
+            setCheckoutData({ zipCode: e.target.value });
+            e.target.focus();
+          }}
+        />
         {errors.zipCode && (
           <FormHelperText>{errors.zipCode.message}</FormHelperText>
         )}
       </FormControl>
 
-      <Button onClick={goBackStep}>Anterior</Button>
-      <Button disabled={!isValid || isSubmitting} type="submit">
+      <FormControl>
+        <FormLabel htmlFor="country">País:</FormLabel>
+        <Input value={"Portugal"} disabled />
+        <FormHelperText style={{ color: "gray" }}>
+          {"No momento, estamos a fazer envios apenas para Portugal"}
+        </FormHelperText>
+      </FormControl>
+
+      <Box sx={{ textAlign: "center" }}>Escolha seu envio</Box>
+
+      <Button onClick={goPrevStep}>Anterior</Button>
+      <Button disabled={isSubmitting} type="submit">
         Proximo
       </Button>
     </form>

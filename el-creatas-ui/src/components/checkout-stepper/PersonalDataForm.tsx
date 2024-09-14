@@ -7,76 +7,91 @@ import {
   FormHelperText,
   Input,
   Button,
+  Stack,
 } from "@mui/joy";
+import { CountrySelect } from "../country-select/CountrySelect";
+import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 
 import "./styles.scss";
 
 const personalDataSchema = z.object({
-  name: z
-    .string()
-    .min(2, { message: "O nome deve ter pelo menos 2 caracteres" }),
-  sureName: z
-    .string()
-    .min(2, { message: "O sobrenome deve ter pelo menos 2 caracteres" }),
+  fullName: z.string().regex(/^[a-zA-Z]+ [a-zA-Z]+(?: [a-zA-Z]*)*$/, {
+    message: "Nome inválido",
+  }),
   email: z.string().email({ message: "Endereço de email inválido" }),
-  phone: z.string().regex(/^\d{9}$/, {
-    message: "Número de telefone inválido (deve ter 9 dígitos)",
+  phone: z.string().min(4, {
+    message: "Telemovel inválido",
   }),
 });
 
 type PersonalData = z.infer<typeof personalDataSchema>;
 
-export const PersonalDataForm = ({
-  goNextStep,
-}: {
-  goNextStep: () => void;
-}) => {
+export const PersonalDataForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
   } = useForm<PersonalData>({
     resolver: zodResolver(personalDataSchema),
   });
 
-  const onSubmit = (data: PersonalData) => {
-    console.log(data);
-    goNextStep();
-  };
+  const { checkoutData, setCheckoutData, goNextStep } = useCheckoutStore();
 
   return (
-    <form className="personal-data-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="personal-data-form" onSubmit={handleSubmit(goNextStep)}>
       <FormControl>
-        <FormLabel htmlFor="name">Primeiro Nome:</FormLabel>
-        <Input {...register("name")} />
-        {errors.name && <FormHelperText>{errors.name.message}</FormHelperText>}
-      </FormControl>
-
-      <FormControl>
-        <FormLabel htmlFor="sureName">Ultimo Nome:</FormLabel>
-        <Input {...register("sureName")} />
-        {errors.sureName && (
-          <FormHelperText>{errors.sureName.message}</FormHelperText>
+        <FormLabel htmlFor="fullName">Nome completo:</FormLabel>
+        <Input
+          {...register("fullName")}
+          name="fullName"
+          placeholder="ex: João Silva"
+          value={checkoutData.fullName}
+          onChange={(e) => {
+            setCheckoutData({ fullName: e.target.value });
+            e.target.focus();
+          }}
+        />
+        {errors.fullName && (
+          <FormHelperText>{errors.fullName.message}</FormHelperText>
         )}
       </FormControl>
 
       <FormControl>
         <FormLabel htmlFor="email">Email:</FormLabel>
-        <Input {...register("email")} />
+        <Input
+          {...register("email")}
+          placeholder="ex: joao@example.com"
+          defaultValue={checkoutData.email}
+          onChange={(e) => {
+            setCheckoutData({ email: e.target.value });
+            e.target.focus();
+          }}
+        />
         {errors.email && (
           <FormHelperText>{errors.email.message}</FormHelperText>
         )}
       </FormControl>
 
       <FormControl>
-        <FormLabel htmlFor="phone">Telefone:</FormLabel>
-        <Input {...register("phone")} />
+        <FormLabel htmlFor="phone">Telemóvel:</FormLabel>
+        <Stack direction="row" gap={1}>
+          <CountrySelect />
+          <Input
+            {...register("phone")}
+            placeholder="ex: 912345678"
+            value={checkoutData.phone}
+            onChange={(e) => {
+              setCheckoutData({ phone: e.target.value });
+              e.target.focus();
+            }}
+          />
+        </Stack>
         {errors.phone && (
           <FormHelperText>{errors.phone.message}</FormHelperText>
         )}
       </FormControl>
 
-      <Button disabled={!isValid || isSubmitting} type="submit">
+      <Button disabled={isSubmitting} type="submit">
         Proximo
       </Button>
     </form>

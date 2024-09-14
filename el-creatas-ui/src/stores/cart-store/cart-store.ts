@@ -24,18 +24,29 @@ export const fakeProducts = [
 ] as CartProduct[];
 
 export const useCartStore = create<ICartStore>((set) => ({
-  cartProducts: [...fakeProducts],
-  totalPrice: fakeProducts.reduce(
-    (acc, product) => acc + product.price * product.quantity,
-    0
-  ),
-  setCartProducts: (cartProducts) =>
-    set({
+  cartProducts: JSON.parse(localStorage.getItem("cartProducts") ?? "[]").length
+    ? JSON.parse(localStorage.getItem("cartProducts") ?? "[]")
+    : [...fakeProducts],
+  totalPrice: (
+    (JSON.parse(
+      localStorage.getItem("cartProducts") ?? "[]"
+    ) as CartProduct[]) ?? fakeProducts
+  ).reduce((acc, product) => acc + product.price * product.quantity, 0),
+  setCartProducts: (cartProducts) => {
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+
+    return set({
       cartProducts,
       totalPrice: cartProducts.reduce(
         (acc, product) => acc + product.price * product.quantity,
         0
       ),
-    }),
-  clearCart: () => set({ cartProducts: [] }),
+    });
+  },
+
+  clearCart: () => {
+    localStorage.setItem("cartProducts", JSON.stringify([]));
+
+    return set({ cartProducts: [] });
+  },
 }));

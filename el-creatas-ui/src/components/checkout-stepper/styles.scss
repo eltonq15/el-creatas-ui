@@ -7,6 +7,10 @@
   border-radius: 8px;
   margin-bottom: 24px;
   width: 400px;
+
+  .MuiFormHelperText-root {
+    color: red;
+  }
 }
 
 .shipping-address-form {
@@ -26,5 +30,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .MuiFormHelperText-root {
+    color: red;
   }
 }
