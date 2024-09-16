@@ -41,7 +41,7 @@
     "zod": "^3.23.8",
     "zustand": "^4.5.5"
   },
-  "homepage": "https://eltonq15.github.io/el-creatas-ui",
+  "homepage": "https://eltonq15.github.io/el-creatas-ui/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
