@@ -13,10 +13,9 @@ import { useGetProducts } from "../../hooks/use-get-products";
 import Product1 from "../../assets/product-1.jpg";
 import Product2 from "../../assets/product-2.jpg";
 import Product3 from "../../assets/product-3.jpg";
+import "./styles.scss";
 
 const productImages = [Product1, Product2, Product3];
-
-import "./styles.scss";
 
 export const Products = () => {
   const { data: products } = useGetProducts();
