@@ -3,7 +3,6 @@ import { formatToEuros } from "../../utils/formatter";
 import {
   SheetClose,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
