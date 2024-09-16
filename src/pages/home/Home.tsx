@@ -1,3 +1,11 @@
+import Aura from "../../assets/formatted/aura.jpg";
+import Background from "../../assets/background-2.jpg";
+import Blossom from "../../assets/formatted/blossom.jpg";
+import Elegance from "../../assets/formatted/elegance.jpg";
+import Essence from "../../assets/formatted/essence.jpg";
+import Harmonia from "../../assets/formatted/harmonia.jpg";
+import Refine from "../../assets/formatted/refine.jpg";
+
 import "./styles.scss";
 
 export const Home = () => {
@@ -5,10 +13,7 @@ export const Home = () => {
     <div className="home-container">
       {/* <ImageSlider images={images} /> */}
       <div className="image-container">
-        <img
-          src={`../../assets../../assets/background-2.jpg`}
-          alt="Background"
-        />
+        <img src={Background} alt="Background" />
       </div>
       <div className="best-sellers-container">
         <h1>Home & Decor</h1>
@@ -16,10 +21,7 @@ export const Home = () => {
           <div className="best-sellers-card-container">
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`../../assets/formatted/aura.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={Aura} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Aura
@@ -28,10 +30,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`../../assets/formatted/blossom.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={Blossom} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Blossom
@@ -40,10 +39,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`../../assets/formatted/elegance.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={Elegance} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Elegance
@@ -52,10 +48,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`../../assets/formatted/essence.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={Essence} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Essence
@@ -64,10 +57,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`../../assets/formatted/harmonia.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={Harmonia} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Harmonia
@@ -76,10 +66,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`../../assets/formatted/refine.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={Refine} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Refine
@@ -91,7 +78,7 @@ export const Home = () => {
         <h1>Where minimalist style takes shape in every detail</h1>
       </div>
       <div className="image-container">
-        <img src={`../../assets/background-2.jpg`} alt="Background" />
+        <img src={Background} alt="Background" />
       </div>
     </div>
   );

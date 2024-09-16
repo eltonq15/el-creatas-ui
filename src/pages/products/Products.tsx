@@ -93,7 +93,7 @@ export const Products = () => {
                 <CardContent>
                   <img
                     style={{ margin: "0 auto", borderRadius: "20px" }}
-                    src={`formatted/${product.name.toLowerCase()}.jpeg`}
+                    src={`../../assets/formatted/${product.name.toLowerCase()}.jpg`}
                     alt={product.name}
                     width={"100%"}
                   />

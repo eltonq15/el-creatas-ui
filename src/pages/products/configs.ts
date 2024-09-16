@@ -1,5 +1,5 @@
 export const productImages = [
-  "/product-1.jpeg",
-  "/product-2.jpeg",
-  "/product-3.jpeg",
+  "../../assets/product-1.jpg",
+  "../../assets/product-2.jpg",
+  "../../assets/product-3.jpg",
 ];
