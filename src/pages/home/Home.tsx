@@ -5,10 +5,7 @@ export const Home = () => {
     <div className="home-container">
       {/* <ImageSlider images={images} /> */}
       <div className="image-container">
-        <img
-          src={`${process.env.PUBLIC_URL}/background-2.jpg`}
-          alt="Background"
-        />
+        <img src={`/background-2.jpg`} alt="Background" />
       </div>
       <div className="best-sellers-container">
         <h1>Home & Decor</h1>
@@ -16,10 +13,7 @@ export const Home = () => {
           <div className="best-sellers-card-container">
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`${process.env.PUBLIC_URL}/formatted/aura.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={`/formatted/aura.jpeg`} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Aura
@@ -28,10 +22,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`${process.env.PUBLIC_URL}/formatted/blossom.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={`/formatted/blossom.jpeg`} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Blossom
@@ -40,10 +31,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`${process.env.PUBLIC_URL}/formatted/elegance.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={`/formatted/elegance.jpeg`} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Elegance
@@ -52,10 +40,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`${process.env.PUBLIC_URL}/formatted/essence.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={`/formatted/essence.jpeg`} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Essence
@@ -64,10 +49,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`${process.env.PUBLIC_URL}/formatted/harmonia.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={`/formatted/harmonia.jpeg`} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Harmonia
@@ -76,10 +58,7 @@ export const Home = () => {
             </div>
             <div className="best-sellers-card">
               <div className="best-sellers-card-image">
-                <img
-                  src={`${process.env.PUBLIC_URL}/formatted/refine.jpeg`}
-                  alt="Best Sellers"
-                />
+                <img src={`/formatted/refine.jpeg`} alt="Best Sellers" />
               </div>
               <div className="card-details">
                 Refine
@@ -91,10 +70,7 @@ export const Home = () => {
         <h1>Where minimalist style takes shape in every detail</h1>
       </div>
       <div className="image-container">
-        <img
-          src={`${process.env.PUBLIC_URL}/background-2.jpg`}
-          alt="Background"
-        />
+        <img src={`/background-2.jpg`} alt="Background" />
       </div>
     </div>
   );

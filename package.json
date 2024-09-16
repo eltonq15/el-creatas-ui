@@ -44,7 +44,7 @@
   "homepage": "https://eltonq15.github.io/el-creatas-ui",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "rm -rf docs && mkdir docs && cp -r build/* docs && git add . && git commit -m 'Deploy to GitHub Pages' && git push origin main",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

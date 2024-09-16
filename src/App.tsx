@@ -8,7 +8,7 @@ import "@fontsource/inter";
 
 const App: React.FC = () => {
   return (
-    <Router basename={"/"}>
+    <Router>
       <NavHeader />
       <Routes>
         <Route path="/" element={<Home />} />
