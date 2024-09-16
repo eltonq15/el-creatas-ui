@@ -12,12 +12,10 @@ import { Checkout } from "./pages/checkout/Checkout";
 import "@fontsource/inter";
 
 const App: React.FC = () => {
-  const location = useLocation();
-
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <NavHeader />
-      <Routes location={location.pathname === "/" ? "/" : location}>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/produtos" element={<Products />} />
