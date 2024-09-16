@@ -1,6 +1,3 @@
-import { images } from "./configs";
-import { ImageSlider } from "../../components/image-slider/ImageSlider";
-
 import "./styles.scss";
 
 export const Home = () => {
