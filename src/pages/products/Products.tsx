@@ -7,9 +7,14 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/shadcn/components/ui/card";
-import { productImages } from "./configs";
+
 import { ProductCardSkeleton } from "../../components/product-card/ProductCard";
 import { useGetProducts } from "../../hooks/use-get-products";
+import Product1 from "../../assets/product-1.jpg";
+import Product2 from "../../assets/product-2.jpg";
+import Product3 from "../../assets/product-3.jpg";
+
+const productImages = [Product1, Product2, Product3];
 
 import "./styles.scss";
 
@@ -34,10 +39,10 @@ export const Products = () => {
             justifyContent: "space-evenly",
           }}
         >
-          {productImages.map((imagePath: string) => (
+          {productImages.map((Image: any) => (
             <img
-              key={imagePath}
-              src={imagePath}
+              key={Image}
+              src={Image}
               alt="products"
               style={{ width: "100px", height: "100px", borderRadius: "50%" }}
             />
