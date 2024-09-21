@@ -12,6 +12,7 @@ import {
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 
 import "./styles.scss";
+import { useNavigate } from "react-router-dom";
 
 const shippingAddressSchema = z.object({
   shippingAddress: z.string().min(4, {
@@ -26,7 +27,7 @@ const shippingAddressSchema = z.object({
 
 type ShippingAddress = z.infer<typeof shippingAddressSchema>;
 
-export const ShippingAddressForm = () => {
+export const CheckoutAddressForm = () => {
   const {
     register,
     handleSubmit,
@@ -37,9 +38,16 @@ export const ShippingAddressForm = () => {
 
   const { checkoutData, setCheckoutData, goPrevStep, goNextStep } =
     useCheckoutStore();
+  const navigate = useNavigate();
 
   return (
-    <form className="shipping-address-form" onSubmit={handleSubmit(goNextStep)}>
+    <form
+      className="shipping-address-form"
+      onSubmit={handleSubmit(() => {
+        goNextStep();
+        navigate("/checkout/pagamento");
+      })}
+    >
       <FormControl>
         <FormLabel htmlFor="shippingAddress">
           Morada Completa (envio e faturação):
@@ -114,7 +122,14 @@ export const ShippingAddressForm = () => {
 
       <Box sx={{ textAlign: "center" }}>Escolha seu envio</Box>
 
-      <Button onClick={goPrevStep}>Anterior</Button>
+      <Button
+        onClick={() => {
+          goPrevStep();
+          navigate("/checkout/dados");
+        }}
+      >
+        Anterior
+      </Button>
       <Button disabled={isSubmitting} type="submit">
         Proximo
       </Button>

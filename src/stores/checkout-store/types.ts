@@ -17,4 +17,5 @@ export interface ICheckoutStore {
     shippingMethod: string;
   };
   setCheckoutData: (data: Partial<CheckoutData>) => void;
+  clearCheckoutData: () => void;
 }

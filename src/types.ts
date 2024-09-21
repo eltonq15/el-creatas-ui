@@ -1,8 +1,8 @@
 export interface Product {
-  id: number;
+  id: string | number;
   name: string;
   price: number;
-  image: string;
+  image?: string;
 }
 
 export interface CartProduct extends Product {

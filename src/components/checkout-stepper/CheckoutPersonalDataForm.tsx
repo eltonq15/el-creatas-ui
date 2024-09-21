@@ -13,6 +13,7 @@ import { CountrySelect } from "../country-select/CountrySelect";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 
 import "./styles.scss";
+import { useNavigate } from "react-router-dom";
 
 const personalDataSchema = z.object({
   fullName: z.string().regex(/^[a-zA-Z]+ [a-zA-Z]+(?: [a-zA-Z]*)*$/, {
@@ -26,7 +27,7 @@ const personalDataSchema = z.object({
 
 type PersonalData = z.infer<typeof personalDataSchema>;
 
-export const PersonalDataForm = () => {
+export const CheckoutPersonalDataForm = () => {
   const {
     register,
     handleSubmit,
@@ -36,9 +37,16 @@ export const PersonalDataForm = () => {
   });
 
   const { checkoutData, setCheckoutData, goNextStep } = useCheckoutStore();
+  const navigate = useNavigate();
 
   return (
-    <form className="personal-data-form" onSubmit={handleSubmit(goNextStep)}>
+    <form
+      className="personal-data-form"
+      onSubmit={handleSubmit(() => {
+        goNextStep();
+        navigate("/checkout/endereco");
+      })}
+    >
       <FormControl>
         <FormLabel htmlFor="fullName">Nome completo:</FormLabel>
         <Input

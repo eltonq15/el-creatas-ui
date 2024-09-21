@@ -8,8 +8,6 @@ import LocalShippingRoundedIcon from "@mui/icons-material/LocalShippingRounded";
 import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { useTheme } from "@mui/joy";
-import { PersonalDataForm } from "./PersonalDataForm";
-import { ShippingAddressForm } from "./ShippingAddressForm";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -202,8 +200,6 @@ export const CheckoutStepper = () => {
           )}
         </Step>
       </Stepper>
-      {isActive(0) && <PersonalDataForm />}
-      {isActive(1) && <ShippingAddressForm />}
     </FormProvider>
   );
 };

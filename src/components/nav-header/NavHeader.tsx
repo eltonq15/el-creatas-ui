@@ -32,15 +32,15 @@ export const NavHeader = () => {
 
   return (
     <nav className="nav-header" role="navigation" ref={navHeaderRef}>
-      {isMobile && <MobileMenu />}
+      <MobileMenu />
       <Logo />
-      {!isMobile && (
+      {/* {!isMobile && (
         <ul className="nav-links">
           <NavLink to="produtos">Produtos</NavLink>
           <NavLink to="sobre">Sobre</NavLink>
           <NavLink to="contato">Contato</NavLink>
         </ul>
-      )}
+      )} */}
       <span
         style={{
           display: "flex",

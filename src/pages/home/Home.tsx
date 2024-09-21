@@ -5,13 +5,37 @@ import Elegance from "../../assets/formatted/elegance.jpg";
 import Essence from "../../assets/formatted/essence.jpg";
 import Harmonia from "../../assets/formatted/harmonia.jpg";
 import Refine from "../../assets/formatted/refine.jpg";
+import { Button, Skeleton } from "@mui/joy";
 
 import "./styles.scss";
+import { useCartStore } from "../../stores/cart-store/cart-store";
+import React from "react";
+import { useGetProducts } from "../../hooks/use-get-products";
+import { ProductCardSkeleton } from "../../components/product-card/ProductCard";
+import { CartProduct, Product } from "../../types";
 
 export const Home = () => {
+  const { cartProducts, setCartProducts } = useCartStore();
+  const { data: products, isLoading } = useGetProducts();
+
+  const imageComponentsMap = {
+    Aura,
+    Blossom,
+    Elegance,
+    Essence,
+    Harmonia,
+    Refine,
+  };
+
+  const handleAddToCart = (product: Product) => {
+    setCartProducts([
+      ...cartProducts,
+      { ...product, quantity: 1 } as unknown as CartProduct,
+    ]);
+  };
+
   return (
     <div className="home-container">
-      {/* <ImageSlider images={images} /> */}
       <div className="image-container">
         <img src={Background} alt="Background" />
       </div>
@@ -19,60 +43,30 @@ export const Home = () => {
         <h1>Home & Decor</h1>
         <div className="best-sellers-slider">
           <div className="best-sellers-card-container">
-            <div className="best-sellers-card">
-              <div className="best-sellers-card-image">
-                <img src={Aura} alt="Best Sellers" />
+            {products?.map((product) => (
+              <div className="best-sellers-card">
+                <div className="best-sellers-card-image">
+                  <img
+                    src={
+                      imageComponentsMap[
+                        product.name as keyof typeof imageComponentsMap
+                      ]
+                    }
+                    alt="Best Sellers"
+                  />
+                </div>
+                <div className="card-details">
+                  {product.name}
+                  <div className="price">{product.price.toFixed(2)} €</div>
+                  <Button
+                    variant="outlined"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    Adicionar ao carrinho
+                  </Button>
+                </div>
               </div>
-              <div className="card-details">
-                Aura
-                <div className="price">32,19 €</div>
-              </div>
-            </div>
-            <div className="best-sellers-card">
-              <div className="best-sellers-card-image">
-                <img src={Blossom} alt="Best Sellers" />
-              </div>
-              <div className="card-details">
-                Blossom
-                <div className="price">13,90 €</div>
-              </div>
-            </div>
-            <div className="best-sellers-card">
-              <div className="best-sellers-card-image">
-                <img src={Elegance} alt="Best Sellers" />
-              </div>
-              <div className="card-details">
-                Elegance
-                <div className="price">15,90 €</div>
-              </div>
-            </div>
-            <div className="best-sellers-card">
-              <div className="best-sellers-card-image">
-                <img src={Essence} alt="Best Sellers" />
-              </div>
-              <div className="card-details">
-                Essence
-                <div className="price">29,90 €</div>
-              </div>
-            </div>
-            <div className="best-sellers-card">
-              <div className="best-sellers-card-image">
-                <img src={Harmonia} alt="Best Sellers" />
-              </div>
-              <div className="card-details">
-                Harmonia
-                <div className="price">12,90 €</div>
-              </div>
-            </div>
-            <div className="best-sellers-card">
-              <div className="best-sellers-card-image">
-                <img src={Refine} alt="Best Sellers" />
-              </div>
-              <div className="card-details">
-                Refine
-                <div className="price">17,90 €</div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <h1>Where minimalist style takes shape in every detail</h1>
