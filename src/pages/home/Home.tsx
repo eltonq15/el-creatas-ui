@@ -27,14 +27,18 @@ export const Home = () => {
   };
 
   const handleAddToCart = (product: Product) => {
-    setCartProducts(
-      cartProducts.map((cartProduct) =>
-        cartProduct.id === product.id
-          ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
-          : cartProduct
-      )
+    const isInCart = cartProducts.find(
+      (cartProduct) => cartProduct.id === product.id
     );
-    return;
+    const products = isInCart
+      ? cartProducts.map((cartProduct) =>
+          cartProduct.id === product.id
+            ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
+            : cartProduct
+        )
+      : [...cartProducts, { ...product, quantity: 1 }];
+
+    setCartProducts(products);
   };
 
   return (
