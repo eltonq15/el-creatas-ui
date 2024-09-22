@@ -1,9 +1,9 @@
 import { CheckoutData } from "../../types";
 
 export interface ICheckoutStore {
-  currentStep: number;
-  goPrevStep: () => void;
-  goNextStep: () => void;
+  clientSecret: string;
+  setClientSecret: (clientSecret: string) => void;
+  clearClientSecret: () => void;
   checkoutData: {
     fullName: string;
     email: string;

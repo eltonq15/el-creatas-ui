@@ -4,19 +4,19 @@ import { CartProduct } from "../../types";
 
 export const fakeProducts = [
   {
-    id: 1,
+    id: "66d34f02c60c52f51379e158",
     name: "Essence",
     price: 34.9,
     quantity: 2,
   },
   {
-    id: 2,
+    id: "66d34c07c60c52f51379e154",
     name: "Blossom",
     price: 29.9,
     quantity: 1,
   },
   {
-    id: 3,
+    id: "66d34a96c60c52f51379e153",
     name: "Aura",
     price: 27.5,
     quantity: 3,

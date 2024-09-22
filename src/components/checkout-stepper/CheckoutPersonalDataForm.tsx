@@ -36,14 +36,13 @@ export const CheckoutPersonalDataForm = () => {
     resolver: zodResolver(personalDataSchema),
   });
 
-  const { checkoutData, setCheckoutData, goNextStep } = useCheckoutStore();
+  const { checkoutData, setCheckoutData } = useCheckoutStore();
   const navigate = useNavigate();
 
   return (
     <form
       className="personal-data-form"
       onSubmit={handleSubmit(() => {
-        goNextStep();
         navigate("/checkout/endereco");
       })}
     >

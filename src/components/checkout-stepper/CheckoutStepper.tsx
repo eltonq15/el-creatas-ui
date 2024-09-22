@@ -9,8 +9,6 @@ import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { useTheme } from "@mui/joy";
 import { FormProvider, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 
 const stepperContainerStyle = {
   width: "100%",
@@ -67,9 +65,6 @@ const stepConfigs = {
 };
 
 export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
-  const navigate = useNavigate();
-  const { checkoutData } = useCheckoutStore();
-
   const isActive = (step: number) => {
     return activeStep === step;
   };
@@ -78,8 +73,8 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
     return activeStep > step;
   };
 
-  const isDisabled = (step: number, forceDisabled?: boolean) => {
-    return forceDisabled && activeStep < step;
+  const isDisabled = (step: number) => {
+    return activeStep < step;
   };
 
   const getConfig = (step: number) => {
@@ -90,11 +85,6 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
 
   const theme = useTheme();
   const methods = useForm();
-
-  const disableStepValidator = [
-    !checkoutData["fullName"],
-    !checkoutData["shippingAddress"],
-  ];
 
   return (
     <FormProvider {...methods}>
@@ -111,15 +101,10 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
         <Step
           active={isActive(0)}
           completed={isCompleted(0)}
-          disabled={isDisabled(0, disableStepValidator[0])}
+          disabled={isDisabled(0)}
           indicator={
             <StepIndicator variant={getConfig(0).variant} sx={getConfig(0).sx}>
-              <ContactsRoundedIcon
-                onClick={() =>
-                  !isDisabled(0, disableStepValidator[0]) &&
-                  navigate("/checkout/dados")
-                }
-              />
+              <ContactsRoundedIcon />
             </StepIndicator>
           }
           orientation="vertical"
@@ -140,15 +125,10 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
         <Step
           active={isActive(1)}
           completed={isCompleted(1)}
-          disabled={isDisabled(1, disableStepValidator[1])}
+          disabled={isDisabled(1)}
           indicator={
             <StepIndicator variant={getConfig(1).variant} sx={getConfig(1).sx}>
-              <LocalShippingRoundedIcon
-                onClick={() =>
-                  !isDisabled(1, disableStepValidator[1]) &&
-                  navigate("/checkout/endereco")
-                }
-              />
+              <LocalShippingRoundedIcon />
             </StepIndicator>
           }
           orientation="vertical"
@@ -171,20 +151,10 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
         <Step
           active={isActive(2)}
           completed={isCompleted(2)}
-          disabled={isDisabled(
-            2,
-            disableStepValidator[0] && disableStepValidator[1]
-          )}
+          disabled={isDisabled(2)}
           indicator={
             <StepIndicator variant={getConfig(2).variant} sx={getConfig(2).sx}>
-              <CreditCardRoundedIcon
-                onClick={() =>
-                  !isDisabled(
-                    2,
-                    disableStepValidator[0] && disableStepValidator[1]
-                  ) && navigate("/checkout/pagamento")
-                }
-              />
+              <CreditCardRoundedIcon />
             </StepIndicator>
           }
           orientation="vertical"

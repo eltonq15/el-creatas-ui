@@ -36,15 +36,13 @@ export const CheckoutAddressForm = () => {
     resolver: zodResolver(shippingAddressSchema),
   });
 
-  const { checkoutData, setCheckoutData, goPrevStep, goNextStep } =
-    useCheckoutStore();
+  const { checkoutData, setCheckoutData } = useCheckoutStore();
   const navigate = useNavigate();
 
   return (
     <form
       className="shipping-address-form"
       onSubmit={handleSubmit(() => {
-        goNextStep();
         navigate("/checkout/pagamento");
       })}
     >
@@ -123,8 +121,9 @@ export const CheckoutAddressForm = () => {
       <Box sx={{ textAlign: "center" }}>Escolha seu envio</Box>
 
       <Button
+        variant="outlined"
+        sx={{ marginTop: "1rem", width: "100%" }}
         onClick={() => {
-          goPrevStep();
           navigate("/checkout/dados");
         }}
       >

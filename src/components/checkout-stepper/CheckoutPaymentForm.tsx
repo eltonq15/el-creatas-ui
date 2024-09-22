@@ -6,10 +6,14 @@ import {
 } from "@stripe/react-stripe-js";
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
 import { Box, Button, Stack, Typography } from "@mui/joy";
+import { useNavigate } from "react-router-dom";
+import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 
 export const CheckoutPaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
+  const { clearClientSecret } = useCheckoutStore();
 
   const [message, setMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +33,8 @@ export const CheckoutPaymentForm = () => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${window.location.origin}/checkout/complete`,
+        return_url: `${window.location.origin}/checkout/complete?isPaymentSuccessful=true`,
+        receipt_email: "info@elcreatas.com",
       },
     });
 
@@ -40,6 +45,8 @@ export const CheckoutPaymentForm = () => {
     // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message as string);
+    } else if (error.code === "payment_intent_unexpected_state") {
+      clearClientSecret();
     } else {
       setMessage("An unexpected error occurred.");
     }
@@ -58,6 +65,15 @@ export const CheckoutPaymentForm = () => {
     <Box sx={{ width: "100%", paddingTop: "3rem" }}>
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" options={paymentElementOptions} />
+        <Button
+          variant="outlined"
+          sx={{ marginTop: "1rem", width: "100%" }}
+          onClick={() => {
+            navigate("/checkout/endereco");
+          }}
+        >
+          Anterior
+        </Button>
         <Button
           sx={{ marginTop: "1rem", width: "100%" }}
           disabled={isLoading || !stripe || !elements}

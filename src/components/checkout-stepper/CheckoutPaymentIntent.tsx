@@ -1,57 +1,54 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutPaymentForm } from "./CheckoutPaymentForm";
-import { useEffect, useState } from "react";
-import { useCartStore } from "../../stores/cart-store/cart-store";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 import { StripeElementsOptions } from "@stripe/stripe-js";
 import { CheckoutStepper } from "./CheckoutStepper";
+import { useCreatePaymentIntent } from "../../hooks/use-create-payment-intent";
+import { Skeleton, Stack } from "@mui/joy";
 
 const stripePromise = loadStripe(
   process.env.REACT_APP_STRIPE_TEST_PUBLISHABLE_KEY as string
 );
 
 export const CheckoutPaymentIntent = () => {
-  const [clientSecret, setClientSecret] = useState("");
+  const { clientSecret, setClientSecret } = useCheckoutStore();
+  const { data, isLoading } = useCreatePaymentIntent();
 
-  const { cartProducts } = useCartStore();
-  const { checkoutData } = useCheckoutStore();
-
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    if (cartProducts.length && checkoutData && !clientSecret) {
-      fetch(`${process.env.REACT_APP_API_URL}/create-payment-intent`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: cartProducts.map((product) => ({
-            ...product,
-            amount: (product.price * product.quantity * 100).toFixed(0),
-          })),
-          customer: checkoutData,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setClientSecret(data.clientSecret);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [cartProducts, checkoutData, clientSecret]);
+  if (data && !clientSecret) {
+    setClientSecret(data);
+  }
 
   const appearance = {
     theme: "stripe",
   };
 
   const options = {
-    clientSecret,
+    clientSecret: data ?? clientSecret,
     appearance,
   };
+
+  if (isLoading) {
+    return (
+      <>
+        <Skeleton
+          height={16}
+          variant="rectangular"
+          sx={{ height: 42, alignSelf: "start" }}
+        />
+        <Skeleton
+          height={16}
+          variant="rectangular"
+          sx={{ height: 400, alignSelf: "start" }}
+        />
+      </>
+    );
+  }
 
   return (
     <>
       <CheckoutStepper activeStep={2} />
-      {clientSecret && (
+      {options.clientSecret && (
         <Elements
           stripe={stripePromise}
           options={options as StripeElementsOptions}

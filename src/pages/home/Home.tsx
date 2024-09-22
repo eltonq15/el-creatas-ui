@@ -27,10 +27,14 @@ export const Home = () => {
   };
 
   const handleAddToCart = (product: Product) => {
-    setCartProducts([
-      ...cartProducts,
-      { ...product, quantity: 1 } as unknown as CartProduct,
-    ]);
+    setCartProducts(
+      cartProducts.map((cartProduct) =>
+        cartProduct.id === product.id
+          ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
+          : cartProduct
+      )
+    );
+    return;
   };
 
   return (
@@ -58,7 +62,16 @@ export const Home = () => {
                   {product.name}
                   <div className="price">{product.price.toFixed(2)} €</div>
                   <Button
-                    variant="outlined"
+                    variant="solid"
+                    sx={{
+                      backgroundColor: "#9f978d",
+                      color: "white",
+                      transition: "all 0.3s ease",
+                      ":hover": {
+                        backgroundColor: "#bdb8b1",
+                        transform: "scale(1.02)",
+                      },
+                    }}
                     onClick={() => handleAddToCart(product)}
                   >
                     Adicionar ao carrinho

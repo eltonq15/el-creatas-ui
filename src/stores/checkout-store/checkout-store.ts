@@ -12,16 +12,23 @@ const DEFAULT_CHECKOUT_DATA: CheckoutData = {
   district: "",
   zipCode: "",
   country: "",
-  shippingMethod: "",
+  shippingMethod: "CTT",
 };
 
 export const useCheckoutStore = create<ICheckoutStore>((set) => ({
-  currentStep: 0,
-  goPrevStep: () => set((state) => ({ currentStep: state.currentStep - 1 })),
-  goNextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
-  checkoutData:
-    JSON.parse(localStorage.getItem("checkoutData") ?? "{}") ??
-    DEFAULT_CHECKOUT_DATA,
+  checkoutData: {
+    ...DEFAULT_CHECKOUT_DATA,
+    ...JSON.parse(localStorage.getItem("checkoutData") ?? "{}"),
+  },
+  clientSecret: localStorage.getItem("clientSecret") ?? "",
+  setClientSecret: (clientSecret: string) => {
+    localStorage.setItem("clientSecret", clientSecret);
+    return set({ clientSecret });
+  },
+  clearClientSecret: () => {
+    localStorage.removeItem("clientSecret");
+    return set({ clientSecret: "" });
+  },
   setCheckoutData: (data: Partial<CheckoutData>) =>
     set((state) => {
       const checkoutData = {
