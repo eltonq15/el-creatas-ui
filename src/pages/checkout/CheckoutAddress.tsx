@@ -4,7 +4,7 @@ import { CheckoutStepper } from "../../components/checkout-stepper/CheckoutStepp
 export const CheckoutAddress = () => {
   return (
     <div>
-      <CheckoutStepper />
+      <CheckoutStepper activeStep={1} />
       <CheckoutAddressForm />
     </div>
   );

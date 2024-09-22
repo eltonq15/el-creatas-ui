@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 import { StripeElementsOptions } from "@stripe/stripe-js";
+import { CheckoutStepper } from "./CheckoutStepper";
 
 const stripePromise = loadStripe(
   process.env.REACT_APP_STRIPE_TEST_PUBLISHABLE_KEY as string
@@ -49,6 +50,7 @@ export const CheckoutPaymentIntent = () => {
 
   return (
     <>
+      <CheckoutStepper activeStep={2} />
       {clientSecret && (
         <Elements
           stripe={stripePromise}

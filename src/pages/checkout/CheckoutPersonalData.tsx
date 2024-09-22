@@ -4,7 +4,7 @@ import { CheckoutPersonalDataForm } from "../../components/checkout-stepper/Chec
 export const CheckoutPersonalData = () => {
   return (
     <div>
-      <CheckoutStepper />
+      <CheckoutStepper activeStep={0} />
       <CheckoutPersonalDataForm />
     </div>
   );

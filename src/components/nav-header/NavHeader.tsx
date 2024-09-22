@@ -1,7 +1,5 @@
-import { NavLink } from "react-router-dom";
 import { Logo } from "../logo/Logo";
 import { Cart } from "../cart/Cart";
-import { useIsMobile } from "../../hooks/use-is-mobile";
 import { MobileMenu } from "../mobile-menu/MobileMenu";
 import { SearchIcon } from "../../assets/SearchIcon";
 import { useEffect, useRef } from "react";
@@ -10,9 +8,7 @@ import "./styles.scss";
 
 export const NavHeader = () => {
   const navHeaderRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
-  // on scroll, if is not at the top, update background color to white
   useEffect(() => {
     const handleScroll = () => {
       if (navHeaderRef.current) {
