@@ -12,7 +12,6 @@ const stripePromise = loadStripe(
 
 export const CheckoutPaymentIntent = () => {
   const [clientSecret, setClientSecret] = useState("");
-  const [dpmCheckerLink, setDpmCheckerLink] = useState("");
 
   const { cartProducts } = useCartStore();
   const { checkoutData } = useCheckoutStore();
@@ -34,8 +33,6 @@ export const CheckoutPaymentIntent = () => {
         .then((res) => res.json())
         .then((data) => {
           setClientSecret(data.clientSecret);
-          // [DEV] For demo purposes only
-          setDpmCheckerLink(data.dpmCheckerLink);
         })
         .catch((err) => console.log(err));
     }
@@ -57,7 +54,7 @@ export const CheckoutPaymentIntent = () => {
           stripe={stripePromise}
           options={options as StripeElementsOptions}
         >
-          <CheckoutPaymentForm dpmCheckerLink={dpmCheckerLink} />
+          <CheckoutPaymentForm />
         </Elements>
       )}
     </>

@@ -7,11 +7,7 @@ import {
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
 import { Box, Button, Stack, Typography } from "@mui/joy";
 
-export const CheckoutPaymentForm = ({
-  dpmCheckerLink,
-}: {
-  dpmCheckerLink: string;
-}) => {
+export const CheckoutPaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -84,14 +80,6 @@ export const CheckoutPaymentForm = ({
         <Typography sx={{ color: "gray", fontSize: "sm", paddingTop: "1rem" }}>
           Os métodos de pagamento são exibidos dinamicamente de acordo com a
           localização do usuário, quantidade de itens e a moeda.
-          {/* <a
-            href={dpmCheckerLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            id="dpm-integration-checker"
-          >
-            Preview payment methods by transaction
-          </a> */}
         </Typography>
       </Stack>
     </Box>

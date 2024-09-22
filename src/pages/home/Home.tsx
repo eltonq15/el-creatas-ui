@@ -5,18 +5,17 @@ import Elegance from "../../assets/formatted/elegance.jpg";
 import Essence from "../../assets/formatted/essence.jpg";
 import Harmonia from "../../assets/formatted/harmonia.jpg";
 import Refine from "../../assets/formatted/refine.jpg";
-import { Button, Skeleton } from "@mui/joy";
-
-import "./styles.scss";
+import { Button } from "@mui/joy";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import React from "react";
 import { useGetProducts } from "../../hooks/use-get-products";
-import { ProductCardSkeleton } from "../../components/product-card/ProductCard";
 import { CartProduct, Product } from "../../types";
+
+import "./styles.scss";
 
 export const Home = () => {
   const { cartProducts, setCartProducts } = useCartStore();
-  const { data: products, isLoading } = useGetProducts();
+  const { data: products } = useGetProducts();
 
   const imageComponentsMap = {
     Aura,
