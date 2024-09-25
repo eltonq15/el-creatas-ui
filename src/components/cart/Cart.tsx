@@ -10,7 +10,7 @@ export const Cart = () => {
 
   return (
     <Sheet>
-      <SheetTrigger asChild>
+      <SheetTrigger asChild id="cart-icon">
         <span>
           <CartIcon />
           <small className="cart-items-count">{cartProducts.length}</small>

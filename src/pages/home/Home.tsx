@@ -5,16 +5,12 @@ import Elegance from "../../assets/formatted/elegance.jpg";
 import Essence from "../../assets/formatted/essence.jpg";
 import Harmonia from "../../assets/formatted/harmonia.jpg";
 import Refine from "../../assets/formatted/refine.jpg";
-import { Button } from "@mui/joy";
-import { useCartStore } from "../../stores/cart-store/cart-store";
 import React from "react";
 import { useGetProducts } from "../../hooks/use-get-products";
-import { CartProduct, Product } from "../../types";
-
+import { AddToCartButton } from "../../components/add-to-cart-button/AddToCartButton";
 import "./styles.scss";
 
 export const Home = () => {
-  const { cartProducts, setCartProducts } = useCartStore();
   const { data: products } = useGetProducts();
 
   const imageComponentsMap = {
@@ -24,21 +20,6 @@ export const Home = () => {
     Essence,
     Harmonia,
     Refine,
-  };
-
-  const handleAddToCart = (product: Product) => {
-    const isInCart = cartProducts.find(
-      (cartProduct) => cartProduct.id === product.id
-    );
-    const products = isInCart
-      ? cartProducts.map((cartProduct) =>
-          cartProduct.id === product.id
-            ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
-            : cartProduct
-        )
-      : [...cartProducts, { ...product, quantity: 1 }];
-
-    setCartProducts(products);
   };
 
   return (
@@ -65,21 +46,7 @@ export const Home = () => {
                 <div className="card-details">
                   {product.name}
                   <div className="price">{product.price.toFixed(2)} €</div>
-                  <Button
-                    variant="solid"
-                    sx={{
-                      backgroundColor: "#9f978d",
-                      color: "white",
-                      transition: "all 0.3s ease",
-                      ":hover": {
-                        backgroundColor: "#bdb8b1",
-                        transform: "scale(1.02)",
-                      },
-                    }}
-                    onClick={() => handleAddToCart(product)}
-                  >
-                    Adicionar ao carrinho
-                  </Button>
+                  <AddToCartButton product={product} />
                 </div>
               </div>
             ))}

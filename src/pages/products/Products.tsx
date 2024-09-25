@@ -8,14 +8,31 @@ import {
   CardTitle,
 } from "../../components/shadcn/components/ui/card";
 
+import Aura from "../../assets/formatted/aura.jpg";
+import Blossom from "../../assets/formatted/blossom.jpg";
+import Elegance from "../../assets/formatted/elegance.jpg";
+import Essence from "../../assets/formatted/essence.jpg";
+import Harmonia from "../../assets/formatted/harmonia.jpg";
+import Refine from "../../assets/formatted/refine.jpg";
+
 import { ProductCardSkeleton } from "../../components/product-card/ProductCard";
 import { useGetProducts } from "../../hooks/use-get-products";
 import Product1 from "../../assets/product-1.jpg";
 import Product2 from "../../assets/product-2.jpg";
 import Product3 from "../../assets/product-3.jpg";
 import "./styles.scss";
+import { Typography } from "@mui/joy";
+import { AddToCartButton } from "../../components/add-to-cart-button/AddToCartButton";
 
 const productImages = [Product1, Product2, Product3];
+const imagesMap = {
+  Aura,
+  Blossom,
+  Elegance,
+  Essence,
+  Harmonia,
+  Refine,
+};
 
 export const Products = () => {
   const { data: products } = useGetProducts();
@@ -68,51 +85,49 @@ export const Products = () => {
             justifyContent: "space-evenly",
             gap: 36,
             flexWrap: "wrap",
-            //set max 3 items per row
             maxWidth: "1400px",
           }}
         >
-          <Suspense fallback={<ProductCardSkeleton />}>
-            {products?.map((product) => (
-              <Card
-                key={product.id}
-                className="w-[400px] product-card"
-                style={{ display: "flex", flexDirection: "column" }}
-              >
-                <CardHeader>
-                  <CardTitle style={{ textAlign: "center", marginBottom: 12 }}>
-                    {product.name}
-                  </CardTitle>
-                  <CardDescription
-                    style={{
-                      textAlign: "center",
-                      height: 320,
-                      fontSize: 18,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <img
-                    style={{ margin: "0 auto", borderRadius: "20px" }}
-                    src={`../../assets/formatted/${product.name.toLowerCase()}.jpg`}
-                    alt={product.name}
-                    width={"100%"}
-                  />
-                </CardContent>
-                <CardFooter>
-                  <p>
-                    {Intl.NumberFormat("pt-PT", {
-                      style: "currency",
-                      currency: "EUR",
-                    }).format(product.price)}
-                  </p>
-                </CardFooter>
-              </Card>
-            ))}
-          </Suspense>
+          {products?.map((product) => (
+            <Card
+              key={product.id}
+              className="w-[400px] product-card"
+              style={{ display: "flex", flexDirection: "column" }}
+            >
+              <CardHeader>
+                <CardTitle style={{ textAlign: "center", marginBottom: 12 }}>
+                  {product.name}
+                </CardTitle>
+                <CardDescription
+                  style={{
+                    textAlign: "center",
+                    height: 320,
+                    fontSize: 18,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {product.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <img
+                  style={{ margin: "0 auto", borderRadius: "20px" }}
+                  src={imagesMap[product.name as keyof typeof imagesMap]}
+                  alt={product.name}
+                  width={"100%"}
+                />
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <Typography>
+                  {Intl.NumberFormat("pt-PT", {
+                    style: "currency",
+                    currency: "EUR",
+                  }).format(product.price)}
+                </Typography>
+                <AddToCartButton product={product} />
+              </CardFooter>
+            </Card>
+          ))}
         </div>
       </div>
     </div>
