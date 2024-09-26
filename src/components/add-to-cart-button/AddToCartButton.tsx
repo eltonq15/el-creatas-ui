@@ -1,8 +1,8 @@
-import { Button } from "@mui/joy";
 import { Product } from "../../hooks/use-get-products";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import { useState } from "react";
 import { AddToCartSnackbar } from "../add-to-cart-snackbar/AddToCartSnackbar";
+import { SolidButton } from "../button/SolidButton";
 
 export const AddToCartButton = ({ product }: { product: Product }) => {
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
@@ -27,21 +27,9 @@ export const AddToCartButton = ({ product }: { product: Product }) => {
 
   return (
     <>
-      <Button
-        variant="solid"
-        sx={{
-          backgroundColor: "#9f978d",
-          color: "white",
-          transition: "all 0.3s ease",
-          ":hover": {
-            backgroundColor: "#bdb8b1",
-            transform: "scale(1.02)",
-          },
-        }}
-        onClick={() => handleAddToCart(product)}
-      >
+      <SolidButton onClick={() => handleAddToCart(product)}>
         Adicionar ao carrinho
-      </Button>
+      </SolidButton>
       <AddToCartSnackbar open={isSnackbarOpen} setOpen={setIsSnackbarOpen} />
     </>
   );

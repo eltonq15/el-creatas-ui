@@ -16,8 +16,9 @@ export const Checkout = () => {
         <Route path="/complete" element={<SuccessfulOrder />} />
         <Route path="*" element={<Navigate to="/checkout/dados" replace />} />
       </Routes>
-
-      <Outlet />
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 };

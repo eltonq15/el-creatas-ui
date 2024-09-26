@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import {
   Card,
   CardContent,
@@ -15,7 +14,6 @@ import Essence from "../../assets/formatted/essence.jpg";
 import Harmonia from "../../assets/formatted/harmonia.jpg";
 import Refine from "../../assets/formatted/refine.jpg";
 
-import { ProductCardSkeleton } from "../../components/product-card/ProductCard";
 import { useGetProducts } from "../../hooks/use-get-products";
 import Product1 from "../../assets/product-1.jpg";
 import Product2 from "../../assets/product-2.jpg";

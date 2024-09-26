@@ -5,9 +5,11 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
-import { Box, Button, Stack, Typography } from "@mui/joy";
+import { Box, Stack, Typography } from "@mui/joy";
 import { useNavigate } from "react-router-dom";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
+import { OutlinedButton } from "../button/OutlinedButton";
+import { SolidButton } from "../button/SolidButton";
 
 export const CheckoutPaymentForm = () => {
   const stripe = useStripe();
@@ -65,29 +67,28 @@ export const CheckoutPaymentForm = () => {
     <Box sx={{ width: "100%", paddingTop: "3rem" }}>
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" options={paymentElementOptions} />
-        <Button
-          variant="outlined"
-          sx={{ marginTop: "1rem", width: "100%" }}
+        <OutlinedButton
+          style={{ marginTop: "1rem", width: "100%" }}
           onClick={() => {
             navigate("/checkout/endereco");
           }}
         >
           Anterior
-        </Button>
-        <Button
-          sx={{ marginTop: "1rem", width: "100%" }}
+        </OutlinedButton>
+        <SolidButton
+          style={{ marginTop: "1rem", width: "100%" }}
           disabled={isLoading || !stripe || !elements}
           id="submit"
           onClick={handleSubmit}
         >
-          <span id="button-text">
+          <span id="SolidButton-text">
             {isLoading ? (
               <div className="spinner" id="spinner"></div>
             ) : (
-              "Pay now"
+              "Pagar agora"
             )}
           </span>
-        </Button>
+        </SolidButton>
         {/* Show any error or success messages */}
         {message && <div id="payment-message">{message}</div>}
       </form>

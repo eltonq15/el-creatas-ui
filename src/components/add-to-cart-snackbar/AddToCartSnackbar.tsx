@@ -1,9 +1,11 @@
 import React from "react";
-import { Button, Snackbar, Stack, Typography } from "@mui/joy";
+import { Snackbar, Stack, Typography } from "@mui/joy";
 import { CheckCircleOutline } from "@mui/icons-material";
 import { HandHeartIcon } from "../../assets/icons/HandHeartIcon";
 import { ArrowRightIcon } from "../../assets/icons/ArrowRightIcon";
 import { ShoppingBagIcon } from "../../assets/icons/ShoppingBagIcon";
+import { OutlinedButton } from "../button/OutlinedButton";
+import { SolidButton } from "../button/SolidButton";
 
 type AddToCartSnackbarProps = {
   open: boolean;
@@ -52,28 +54,15 @@ export const AddToCartSnackbar = ({
         <Stack
           direction="row"
           spacing={1}
-          sx={{ justifyContent: "space-evenly" }}
+          sx={{ justifyContent: "space-evenly", display: "flex" }}
         >
-          <Button
-            variant="outlined"
-            sx={{
-              color: "black",
-              borderColor: "black",
-              width: "45%",
-              "&:hover": { backgroundColor: "#9f978d" },
-            }}
+          <OutlinedButton
             onClick={() => setOpen(false)}
+            style={{ width: "50%" }}
           >
             Continuar Comprando
-          </Button>
-          <Button
-            variant="solid"
-            sx={{
-              backgroundColor: "black",
-              borderColor: "white",
-              width: "45%",
-              "&:hover": { backgroundColor: "#9f978d" },
-            }}
+          </OutlinedButton>
+          <SolidButton
             onClick={() => {
               setOpen(false);
               const cartIcon = document.getElementById("cart-icon");
@@ -81,9 +70,10 @@ export const AddToCartSnackbar = ({
                 cartIcon.click();
               }
             }}
+            style={{ width: "50%" }}
           >
             Ir para o Carrinho
-          </Button>
+          </SolidButton>
         </Stack>
       </Stack>
     </Snackbar>

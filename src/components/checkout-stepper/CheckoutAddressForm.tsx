@@ -6,13 +6,18 @@ import {
   FormControl,
   FormHelperText,
   Input,
-  Button,
   Box,
+  Typography,
+  Radio,
+  Stack,
 } from "@mui/joy";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
+import { useNavigate } from "react-router-dom";
+import { SolidButton } from "../button/SolidButton";
+import { OutlinedButton } from "../button/OutlinedButton";
+import { addBusinessDays, format } from "date-fns";
 
 import "./styles.scss";
-import { useNavigate } from "react-router-dom";
 
 const shippingAddressSchema = z.object({
   shippingAddress: z.string().min(4, {
@@ -118,20 +123,52 @@ export const CheckoutAddressForm = () => {
         </FormHelperText>
       </FormControl>
 
-      <Box sx={{ textAlign: "center" }}>Escolha seu envio</Box>
+      <Box sx={{ textAlign: "center" }}>
+        <Typography level="body-lg">Escolha seu envio</Typography>
+        <Stack
+          direction={"row"}
+          sx={{
+            gap: "2rem",
+            alignItems: "center",
+            justifyContent: "start",
+            border: "1px solid black",
+            borderRadius: 8,
+            padding: "1rem",
+          }}
+        >
+          <Radio
+            value={checkoutData.shippingMethod}
+            checked={checkoutData.shippingMethod === "CTT"}
+            onChange={(e) => {
+              setCheckoutData({ shippingMethod: e.target.value });
+            }}
+            sx={{
+              color: "black",
+              "& .Mui-checked": { color: "black", borderColor: "black" },
+            }}
+          />
+          <Stack justifyContent="start" alignItems="start">
+            <Typography level="body-sm" fontWeight={700}>
+              CTT Express - 5,90€
+            </Typography>
+            <Typography level="body-sm">
+              (Receba até o dia{" "}
+              <b>{format(addBusinessDays(new Date(), 4), "dd/MM/yyyy")}</b>)
+            </Typography>
+          </Stack>
+        </Stack>
+      </Box>
 
-      <Button
-        variant="outlined"
-        sx={{ marginTop: "1rem", width: "100%" }}
+      <OutlinedButton
         onClick={() => {
           navigate("/checkout/dados");
         }}
       >
         Anterior
-      </Button>
-      <Button disabled={isSubmitting} type="submit">
+      </OutlinedButton>
+      <SolidButton disabled={isSubmitting} type="submit">
         Proximo
-      </Button>
+      </SolidButton>
     </form>
   );
 };

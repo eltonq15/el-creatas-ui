@@ -16,7 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from "../shadcn/components/ui/table";
-import { Button } from "../shadcn/components/ui/button";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import {
   Select,
@@ -25,9 +24,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../shadcn/components/ui/select";
+import { Typography } from "@mui/joy";
+import { SolidButton } from "../button/SolidButton";
 
 import "./styles.scss";
-import { Typography } from "@mui/joy";
 
 export const CartDrawer = () => {
   const { cartProducts, setCartProducts, totalPrice } = useCartStore();
@@ -99,16 +99,14 @@ export const CartDrawer = () => {
       )}
       <SheetFooter>
         <SheetClose asChild>
-          <Link to="/checkout">
-            <Button
-              id="cart-drawer-confirm-button"
+          <Link to={cartProducts.length > 0 ? "/checkout" : ""}>
+            <SolidButton
               className="mt-4"
-              color="#d6b8a9"
               type="submit"
               disabled={cartProducts.length === 0}
             >
               Finalizar compra
-            </Button>
+            </SolidButton>
           </Link>
         </SheetClose>
       </SheetFooter>

@@ -1,19 +1,13 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import {
-  FormLabel,
-  FormControl,
-  FormHelperText,
-  Input,
-  Button,
-  Stack,
-} from "@mui/joy";
+import { FormLabel, FormControl, FormHelperText, Input, Stack } from "@mui/joy";
 import { CountrySelect } from "../country-select/CountrySelect";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
+import { useNavigate } from "react-router-dom";
+import { SolidButton } from "../button/SolidButton";
 
 import "./styles.scss";
-import { useNavigate } from "react-router-dom";
 
 const personalDataSchema = z.object({
   fullName: z.string().regex(/^[a-zA-Z]+ [a-zA-Z]+(?: [a-zA-Z]*)*$/, {
@@ -98,9 +92,9 @@ export const CheckoutPersonalDataForm = () => {
         )}
       </FormControl>
 
-      <Button disabled={isSubmitting} type="submit">
+      <SolidButton disabled={isSubmitting} type="submit">
         Proximo
-      </Button>
+      </SolidButton>
     </form>
   );
 };

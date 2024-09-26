@@ -46,7 +46,7 @@ export const CheckoutPaymentIntent = () => {
   }
 
   return (
-    <>
+    <Stack maxWidth={400}>
       <CheckoutStepper activeStep={2} />
       {options.clientSecret && (
         <Elements
@@ -56,6 +56,6 @@ export const CheckoutPaymentIntent = () => {
           <CheckoutPaymentForm />
         </Elements>
       )}
-    </>
+    </Stack>
   );
 };
