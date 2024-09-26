@@ -86,13 +86,18 @@ export const Products = () => {
             gap: 36,
             flexWrap: "wrap",
             maxWidth: "1400px",
+            scrollSnapType: "both mandatory",
           }}
         >
           {products?.map((product) => (
             <Card
               key={product.id}
               className="w-[400px] product-card"
-              style={{ display: "flex", flexDirection: "column" }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                scrollSnapAlign: "start",
+              }}
             >
               <CardHeader>
                 <CardTitle style={{ textAlign: "center", marginBottom: 12 }}>

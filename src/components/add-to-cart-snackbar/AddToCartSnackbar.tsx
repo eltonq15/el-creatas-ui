@@ -28,6 +28,8 @@ export const AddToCartSnackbar = ({
         background: "#ede8de",
         maxWidth: 360,
         direction: "column",
+        position: "fixed",
+        top: 100,
       }}
     >
       <Stack alignContent={"center"} gap={2}>
