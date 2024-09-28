@@ -18,10 +18,13 @@ const App: React.FC = () => {
         "download",
         "apple-developer-merchantid-domain-association"
       );
+      if (link.download) {
+        link.download = link.download.replace(/\.[^/.]+$/, "");
+      }
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    }, 3000);
+    }, 1000);
   };
 
   return (
