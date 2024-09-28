@@ -138,6 +138,7 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
               <Typography
                 sx={{
                   textTransform: "uppercase",
+                  textAlign: "center",
                   fontWeight: "lg",
                   fontSize: "0.75rem",
                   letterSpacing: "0.5px",
@@ -163,6 +164,7 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
             <Typography
               sx={{
                 textTransform: "uppercase",
+                textAlign: "center",
                 fontWeight: "lg",
                 fontSize: "0.75rem",
                 letterSpacing: "0.5px",
@@ -187,6 +189,7 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
             <Typography
               sx={{
                 textTransform: "uppercase",
+                textAlign: "center",
                 fontWeight: "lg",
                 fontSize: "0.75rem",
                 letterSpacing: "0.5px",

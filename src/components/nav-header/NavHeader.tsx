@@ -1,7 +1,6 @@
 import { Logo } from "../logo/Logo";
 import { Cart } from "../cart/Cart";
 import { MobileMenu } from "../mobile-menu/MobileMenu";
-import { SearchIcon } from "../../assets/SearchIcon";
 import { useEffect, useRef } from "react";
 
 import "./styles.scss";
@@ -30,13 +29,6 @@ export const NavHeader = () => {
     <nav className="nav-header" role="navigation" ref={navHeaderRef}>
       <MobileMenu />
       <Logo />
-      {/* {!isMobile && (
-        <ul className="nav-links">
-          <NavLink to="produtos">Produtos</NavLink>
-          <NavLink to="sobre">Sobre</NavLink>
-          <NavLink to="contato">Contato</NavLink>
-        </ul>
-      )} */}
       <span
         style={{
           display: "flex",
@@ -46,7 +38,6 @@ export const NavHeader = () => {
           right: "48px",
         }}
       >
-        <SearchIcon />
         <Cart />
       </span>
     </nav>

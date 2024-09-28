@@ -5,18 +5,19 @@ import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 import { StripeElementsOptions } from "@stripe/stripe-js";
 import { CheckoutStepper } from "./CheckoutStepper";
 import { useCreatePaymentIntent } from "../../hooks/use-create-payment-intent";
-import { Skeleton, Stack } from "@mui/joy";
+import { Skeleton, Stack, Typography } from "@mui/joy";
 
 const stripePromise = loadStripe(
   process.env.REACT_APP_STRIPE_TEST_PUBLISHABLE_KEY as string
 );
 
 export const CheckoutPaymentIntent = () => {
-  const { clientSecret, setClientSecret } = useCheckoutStore();
-  const { data, isLoading } = useCreatePaymentIntent();
+  const { clientSecret: persistedClientSecret, setClientSecret } =
+    useCheckoutStore();
+  const { data: createdClientSecret, isLoading } = useCreatePaymentIntent();
 
-  if (data && !clientSecret) {
-    setClientSecret(data);
+  if (createdClientSecret && !persistedClientSecret) {
+    setClientSecret(createdClientSecret);
   }
 
   const appearance = {
@@ -24,37 +25,55 @@ export const CheckoutPaymentIntent = () => {
   };
 
   const options = {
-    clientSecret: data ?? clientSecret,
+    clientSecret: persistedClientSecret,
     appearance,
   };
 
-  if (isLoading) {
+  if (!isLoading && !persistedClientSecret) {
     return (
-      <>
-        <Skeleton
-          height={16}
-          variant="rectangular"
-          sx={{ height: 42, alignSelf: "start" }}
-        />
-        <Skeleton
-          height={16}
-          variant="rectangular"
-          sx={{ height: 400, alignSelf: "start" }}
-        />
-      </>
+      <Stack
+        sx={{
+          width: 400,
+          height: 400,
+          alignitems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CheckoutStepper activeStep={2} />
+        <Typography
+          level="body-md"
+          sx={{
+            marginTop: "1rem",
+            textAlign: "center",
+            height: 320,
+          }}
+        >
+          Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.
+        </Typography>
+      </Stack>
     );
   }
 
   return (
-    <Stack maxWidth={400}>
+    <Stack sx={{ width: 400, alignSelf: "center" }}>
       <CheckoutStepper activeStep={2} />
-      {options.clientSecret && (
-        <Elements
-          stripe={stripePromise}
-          options={options as StripeElementsOptions}
-        >
-          <CheckoutPaymentForm />
-        </Elements>
+      {isLoading ? (
+        <Skeleton
+          height={16}
+          variant="rectangular"
+          sx={{ height: 400, maxWidth: 400, alignSelf: "start", marginTop: 3 }}
+        />
+      ) : (
+        options.clientSecret && (
+          <Stack sx={{ maxWidth: 400, alignSelf: "center" }}>
+            <Elements
+              stripe={stripePromise}
+              options={options as StripeElementsOptions}
+            >
+              <CheckoutPaymentForm />
+            </Elements>
+          </Stack>
+        )
       )}
     </Stack>
   );

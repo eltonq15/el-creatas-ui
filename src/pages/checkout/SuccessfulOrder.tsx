@@ -1,32 +1,134 @@
-import { Button, Stack } from "@mui/joy";
+import { Link, Stack, Typography } from "@mui/joy";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 import { useNavigate } from "react-router-dom";
+import { SolidButton } from "../../components/button/SolidButton";
+import { formatToEuros } from "../../utils/formatter";
+import { addBusinessDays, format } from "date-fns";
+import { useOrderData } from "../../hooks/use-order-data";
+import { CheckoutStepper } from "../../components/checkout-stepper/CheckoutStepper";
 
 export const SuccessfulOrder = () => {
   const { checkoutData, clearCheckoutData, clearClientSecret } =
     useCheckoutStore();
-  const { cartProducts, clearCart } = useCartStore();
+  const { cartProducts, totalPrice, clearCart } = useCartStore();
   const navigate = useNavigate();
 
   const queryParams = new URLSearchParams(window.location.search);
-  const isPaymentSuccessful = queryParams.get("isPaymentSuccessful");
+  const orderId = queryParams.get("order_id") as string;
 
-  if (!isPaymentSuccessful) {
+  const { data: orderData, isLoading } = useOrderData(orderId);
+
+  if (!orderData && !isLoading) {
     return (
-      <Stack sx={{ textAlign: "center", gap: "1rem" }} direction={"column"}>
+      <Stack
+        sx={{ textAlign: "center", gap: "1rem", width: 400 }}
+        direction={"column"}
+      >
+        <CheckoutStepper activeStep={3} />
+
         <h1>Ocorreu um erro</h1>
-        <Button component={"a"} href={"/"}>
+        <SolidButton onClick={() => navigate("/")}>
           Ir para o inicio
-        </Button>
+        </SolidButton>
       </Stack>
     );
   }
 
   return (
-    <Stack sx={{ textAlign: "center", gap: "1rem" }} direction={"column"}>
-      Obrigado pela sua compra!
-      <Button
+    <Stack
+      sx={{
+        textAlign: "center",
+        gap: "1rem",
+        width: 400,
+      }}
+      direction={"column"}
+    >
+      <CheckoutStepper activeStep={3} />
+      <h1>Pedido confirmado 🖤</h1>
+      <Stack
+        sx={{
+          textAlign: "center",
+          gap: "1rem",
+          padding: "2rem",
+          border: "1px dashed #000",
+        }}
+      >
+        <h2>Obrigado pela sua compra!</h2>
+        <Typography level="body-md">
+          Em breve você receberará um email no endereço{" "}
+          <b>{checkoutData.email}</b> com todos os detalhes do pedido
+        </Typography>
+      </Stack>
+      <Stack
+        sx={{
+          textAlign: "center",
+          gap: "1rem",
+          padding: "2rem",
+          border: "1px dashed #000",
+        }}
+      >
+        <h2>Detalhes do pedido</h2>
+        <Typography
+          sx={{ textAlign: "start" }}
+          alignSelf="start"
+          level="body-md"
+        >
+          <b>ID: </b>
+          {orderData?.id}
+          <Stack>
+            <small>
+              (Acompanhe seu pedido por{" "}
+              <Link component={"a"} href={`/pedidos/${orderData?.id}`}>
+                aqui
+              </Link>
+              )
+            </small>
+          </Stack>
+        </Typography>
+        <Typography alignSelf="start" level="body-md">
+          <b>Total: </b>
+          {formatToEuros(totalPrice)}
+        </Typography>
+        <Typography alignSelf="start" level="body-md">
+          <b>Forma de pagamento: </b>
+          {/* {checkoutData.paymentMethod} */}
+          {/* {orderData.payment_method} */}
+          Multibanco
+        </Typography>
+        {"Multibanco" && (
+          <Stack>
+            <Typography alignSelf="start" level="body-md">
+              <b>Entidade: </b>
+              {/* {checkoutData.paymentMethod} */}
+              {/* {orderData.payment_method} */}
+              1234567
+            </Typography>
+            <Typography alignSelf="start" level="body-md">
+              <b>Referencia: </b>
+              123 456 789
+            </Typography>
+            <Typography alignSelf="start" level="body-md">
+              <b>Montante: </b>
+              {formatToEuros(totalPrice)}
+            </Typography>
+          </Stack>
+        )}
+        <Typography alignSelf="start" level="body-md">
+          <b>Forma de anvio: </b>
+          <Typography level="body-sm" fontWeight={700}>
+            CTT Express
+          </Typography>
+        </Typography>
+        <Typography alignSelf="start" level="body-md">
+          <Typography level="body-sm">
+            Entrega prevista: até o dia{" "}
+            <b>{format(addBusinessDays(new Date(), 4), "dd/MM/yyyy")}</b>
+          </Typography>
+        </Typography>
+      </Stack>
+
+      <SolidButton
         onClick={() => {
           if (checkoutData.email || cartProducts.length) {
             clearCart();
@@ -37,7 +139,7 @@ export const SuccessfulOrder = () => {
         }}
       >
         Ir para o inicio
-      </Button>
+      </SolidButton>
     </Stack>
   );
 };
