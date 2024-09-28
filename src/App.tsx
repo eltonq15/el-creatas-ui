@@ -21,7 +21,7 @@ const App: React.FC = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    }, 1000);
+    }, 3000);
   };
 
   return (
