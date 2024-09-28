@@ -9,17 +9,19 @@ import "@fontsource/inter";
 
 const App: React.FC = () => {
   const handleDownload = () => {
-    const fileUrl =
-      "/.well-known/apple-developer-merchantid-domain-association"; // Caminho para o seu arquivo
-    const link = document.createElement("a");
-    link.href = fileUrl;
-    link.setAttribute(
-      "download",
-      "apple-developer-merchantid-domain-association"
-    );
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    setTimeout(() => {
+      const fileUrl =
+        "/.well-known/apple-developer-merchantid-domain-association"; // Caminho para o seu arquivo
+      const link = document.createElement("a");
+      link.href = fileUrl;
+      link.setAttribute(
+        "download",
+        "apple-developer-merchantid-domain-association"
+      );
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }, 1000);
   };
 
   return (
