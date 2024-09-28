@@ -8,39 +8,11 @@ import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import "@fontsource/inter";
 
 const App: React.FC = () => {
-  const handleDownload = () => {
-    setTimeout(() => {
-      const fileUrl =
-        "/.well-known/apple-developer-merchantid-domain-association"; // Caminho para o seu arquivo
-      const link = document.createElement("a");
-      link.href = fileUrl;
-      link.setAttribute(
-        "download",
-        "apple-developer-merchantid-domain-association"
-      );
-      if (link.download) {
-        link.download = link.download.replace(/\.[^/.]+$/, "");
-      }
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }, 1000);
-  };
-
   return (
     <Router>
       <NavHeader />
       <ScrollToTop />
       <Routes>
-        <Route
-          path="/.well-known/abc"
-          element={
-            <div>
-              {/* @ts-ignore */}
-              <button onClick={handleDownload()}>Baixar Arquivo Apple</button>
-            </div>
-          }
-        />
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/produtos" element={<Products />} />
