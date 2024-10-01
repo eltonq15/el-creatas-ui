@@ -25,11 +25,11 @@ export const CheckoutPaymentIntent = () => {
   };
 
   const options = {
-    clientSecret: persistedClientSecret,
+    clientSecret: createdClientSecret ?? persistedClientSecret,
     appearance,
   };
 
-  if (!isLoading && !persistedClientSecret) {
+  if (!isLoading && !options.clientSecret) {
     return (
       <Stack
         sx={{
@@ -65,7 +65,7 @@ export const CheckoutPaymentIntent = () => {
         />
       ) : (
         options.clientSecret && (
-          <Stack sx={{ maxWidth: 400, alignSelf: "center" }}>
+          <Stack sx={{ width: 400, alignSelf: "center" }}>
             <Elements
               stripe={stripePromise}
               options={options as StripeElementsOptions}

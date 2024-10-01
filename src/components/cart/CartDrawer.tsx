@@ -85,7 +85,7 @@ export const CartDrawer = () => {
           </TableBody>
           <TableFooter>
             <TableRow>
-              <TableCell colSpan={3}>Total</TableCell>
+              <TableCell colSpan={3}>Subtotal</TableCell>
               <TableCell className="text-right">
                 {formatToEuros(totalPrice)}
               </TableCell>

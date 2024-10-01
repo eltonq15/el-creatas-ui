@@ -149,7 +149,7 @@ export const CheckoutAddressForm = () => {
           />
           <Stack justifyContent="start" alignItems="start">
             <Typography level="body-sm" fontWeight={700}>
-              CTT Express - 5,90€
+              CTT Envios - 4,80€
             </Typography>
             <Typography level="body-sm">
               (Receba até o dia{" "}

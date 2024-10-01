@@ -117,7 +117,7 @@ export const SuccessfulOrder = () => {
         <Typography alignSelf="start" level="body-md">
           <b>Forma de anvio: </b>
           <Typography level="body-sm" fontWeight={700}>
-            CTT Express
+            CTT Envios
           </Typography>
         </Typography>
         <Typography alignSelf="start" level="body-md">
