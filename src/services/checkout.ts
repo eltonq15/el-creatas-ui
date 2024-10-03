@@ -1,7 +1,8 @@
 import { createAddress, getAddressByUserId } from "../api/addresses-api";
-import { createOrderItens } from "../api/order-itens-api";
+import { createOrderItems } from "../api/order-itens-api";
 import { createOrder } from "../api/orders-api";
 import { createUser, getUserByEmail } from "../api/users-api";
+import { PaymentMethods, PaymentStatus } from "../constants";
 import { CartProduct, CheckoutData } from "../types";
 
 export const checkout = async (data: CheckoutData, products: CartProduct[]) => {
@@ -17,11 +18,13 @@ export const checkout = async (data: CheckoutData, products: CartProduct[]) => {
 
   const order = await createOrder({
     ...data,
-    user_id: user.id,
-    address_id: address.id,
+    userId: user.id,
+    addressId: address.id,
+    paymentMethod: PaymentMethods.MULTIBANCO,
+    status: PaymentStatus.PENDING,
   });
 
-  const orderItens = await createOrderItens(order.id, products);
+  const orderItems = await createOrderItems(order.id, products);
 
-  return { order, orderItens };
+  return { order, orderItems };
 };

@@ -8,7 +8,7 @@ import { useCreatePaymentIntent } from "../../hooks/use-create-payment-intent";
 import { Skeleton, Stack, Typography } from "@mui/joy";
 
 const stripePromise = loadStripe(
-  process.env.REACT_APP_STRIPE_TEST_PUBLISHABLE_KEY as string
+  process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY as string
 );
 
 export const CheckoutPaymentIntent = () => {

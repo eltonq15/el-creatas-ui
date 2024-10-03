@@ -3,11 +3,11 @@ import { CheckoutData } from "../types";
 import { createOrder } from "../api/orders-api";
 
 export type OrderData = {
-  address_id: string;
+  addressId: string;
   created_at: string;
   id: string;
-  payment_method: string;
-  payment_status: string;
+  paymentMethod: string;
+  status: string;
   total_amount: number;
   user_id: string;
 };

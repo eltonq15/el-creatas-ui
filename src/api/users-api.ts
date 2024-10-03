@@ -15,19 +15,19 @@ export type UserData = {
 };
 
 export const getUserByEmail = (email: string): Promise<UserData> => {
-  return fetch(`${process.env.REACT_APP_API_URL}/user?email=${email}`).then(
+  return fetch(`${process.env.REACT_APP_API_URL}/users?email=${email}`).then(
     (res) => res.json()
   );
 };
 
 export const getUserById = (id: string): Promise<UserData> => {
-  return fetch(`${process.env.REACT_APP_API_URL}/user/${id}`).then((res) =>
+  return fetch(`${process.env.REACT_APP_API_URL}/users/${id}`).then((res) =>
     res.json()
   );
 };
 
 export const createUser = (data: UserParams): Promise<UserData> => {
-  return fetch(`${process.env.REACT_APP_API_URL}/user`, {
+  return fetch(`${process.env.REACT_APP_API_URL}/users`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,5 +35,7 @@ export const createUser = (data: UserParams): Promise<UserData> => {
     body: JSON.stringify({
       ...data,
     }),
-  }).then((res) => res.json());
+  })
+    .then((res) => res.json())
+    .catch((err) => new Error(err));
 };

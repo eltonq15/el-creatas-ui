@@ -7,6 +7,7 @@ import { formatToEuros } from "../../utils/formatter";
 import { addBusinessDays, format } from "date-fns";
 import { useOrderData } from "../../hooks/use-order-data";
 import { CheckoutStepper } from "../../components/checkout-stepper/CheckoutStepper";
+import { PaymentMethods } from "../../constants";
 
 export const SuccessfulOrder = () => {
   const { checkoutData, clearCheckoutData, clearClientSecret } =
@@ -94,9 +95,9 @@ export const SuccessfulOrder = () => {
           <b>Forma de pagamento: </b>
           {/* {checkoutData.paymentMethod} */}
           {/* {orderData.payment_method} */}
-          Multibanco
+          {orderData?.payment_method}
         </Typography>
-        {"Multibanco" && (
+        {orderData?.payment_method === PaymentMethods.MULTIBANCO && (
           <Stack>
             <Typography alignSelf="start" level="body-md">
               <b>Entidade: </b>

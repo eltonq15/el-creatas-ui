@@ -54,14 +54,17 @@ export const CheckoutPaymentForm = () => {
     console.log({ elements });
     const { order } = await checkout(checkoutData, cartProducts);
 
-    const { error } = await stripe.confirmPayment({
+    const paymentConfirmation = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${window.location.origin}/checkout/complete?order_id=${order.id}`,
+        // return_url: `${window.location.origin}/checkout/complete?order_id=${order.id}`,
+        return_url: `${window.location.origin}/checkout/pagamento`,
         receipt_email: "info@elcreatas.com",
       },
     });
+
+    const { error } = paymentConfirmation;
 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to

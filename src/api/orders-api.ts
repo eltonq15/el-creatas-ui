@@ -2,7 +2,7 @@ import { OrderParams } from "../hooks/use-create-order";
 import { OrderData } from "../hooks/use-order-data";
 
 export const createOrder = (data: OrderParams): Promise<OrderData> => {
-  return fetch(`${process.env.REACT_APP_API_URL}/order`, {
+  return fetch(`${process.env.REACT_APP_API_URL}/orders`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,7 +16,7 @@ export const getOrderById = (orderId: string): Promise<OrderData> => {
     return Promise.resolve({} as OrderData);
   }
 
-  return fetch(`${process.env.REACT_APP_API_URL}/order/${orderId}`).then(
+  return fetch(`${process.env.REACT_APP_API_URL}/orders/${orderId}`).then(
     (res) => res.json()
   );
 };
