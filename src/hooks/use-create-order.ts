@@ -1,25 +1,35 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { CheckoutData } from "../types";
 import { createOrder } from "../api/orders-api";
 
+export type OrderItem = {
+  id: string;
+  orderId: string;
+  productId: string;
+  quantity: number;
+  price: number;
+};
 export type OrderData = {
   addressId: string;
   created_at: string;
   id: string;
   paymentMethod: string;
   status: string;
-  total_amount: number;
-  user_id: string;
+  userId: string;
+  orderItems?: OrderItem[];
 };
 
-export type OrderParams = {};
+export type OrderParams = {
+  userId: string;
+  addressId: string;
+  paymentMethod: string;
+  status: string;
+};
 
 export const useCreateOrder = (
-  data: CheckoutData
+  data: OrderParams
 ): UseQueryResult<OrderData, Error> => {
-  return useQuery<OrderData, Error>({
-    queryKey: ["get-order", data],
-    queryFn: createOrder,
-    enabled: !!data,
+  return useQuery<any, Error>({
+    queryKey: ["create-order"],
+    queryFn: () => createOrder(data),
   });
 };
