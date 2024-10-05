@@ -10,8 +10,7 @@ import { CheckoutStepper } from "../../components/checkout-stepper/CheckoutStepp
 import { PaymentMethods } from "../../constants";
 
 export const SuccessfulOrder = () => {
-  const { checkoutData, clearCheckoutData, clearClientSecret } =
-    useCheckoutStore();
+  const { checkoutData, clearCheckoutData } = useCheckoutStore();
   const { cartProducts, totalPrice, clearCart } = useCartStore();
   const navigate = useNavigate();
 
@@ -134,7 +133,6 @@ export const SuccessfulOrder = () => {
           if (checkoutData.email || cartProducts.length) {
             clearCart();
             clearCheckoutData();
-            clearClientSecret();
           }
           navigate("/");
         }}

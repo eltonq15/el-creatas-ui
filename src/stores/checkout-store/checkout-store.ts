@@ -20,15 +20,6 @@ export const useCheckoutStore = create<ICheckoutStore>((set) => ({
     ...DEFAULT_CHECKOUT_DATA,
     ...JSON.parse(localStorage.getItem("checkoutData") ?? "{}"),
   },
-  clientSecret: localStorage.getItem("clientSecret") ?? "",
-  setClientSecret: (clientSecret: string) => {
-    localStorage.setItem("clientSecret", clientSecret);
-    return set({ clientSecret });
-  },
-  clearClientSecret: () => {
-    localStorage.removeItem("clientSecret");
-    return set({ clientSecret: "" });
-  },
   setCheckoutData: (data: Partial<CheckoutData>) =>
     set((state) => {
       const checkoutData = {
