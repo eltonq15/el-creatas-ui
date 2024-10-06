@@ -15,7 +15,7 @@ import { SolidButton } from "../button/SolidButton";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import { formatToEuros } from "../../utils/formatter";
 import { checkout } from "../../services/checkout";
-import { PaymentMethods } from "../../constants";
+import { FRETE, PaymentMethods } from "../../constants";
 import { CheckoutStepper } from "./CheckoutStepper";
 
 import "./styles.scss";
@@ -81,10 +81,19 @@ export const CheckoutPaymentForm = () => {
         body: JSON.stringify({
           paymentMethodType: PaymentMethods.CARD,
           currency: "eur",
-          items: cartProducts.map((product) => ({
-            ...product,
-            amount: (product.price * product.quantity * 100).toFixed(0),
-          })),
+          items: [
+            ...cartProducts.map((product) => ({
+              ...product,
+              amount: (product.price * product.quantity * 100).toFixed(0),
+            })),
+            {
+              id: "frete",
+              name: "Frete",
+              price: FRETE,
+              quantity: 1,
+              amount: (FRETE * 100).toFixed(0),
+            },
+          ],
           customer: checkoutData,
         }),
       }
