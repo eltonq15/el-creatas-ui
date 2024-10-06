@@ -1,11 +1,16 @@
 import { createAddress, getAddressByUserId } from "../api/addresses-api";
 import { createOrderItems } from "../api/order-itens-api";
 import { createOrder } from "../api/orders-api";
+import { createPayment } from "../api/payments-api";
 import { createUser, getUserByEmail } from "../api/users-api";
-import { PaymentMethods, PaymentStatus } from "../constants";
+import { FRETE, PaymentMethods, PaymentStatus } from "../constants";
 import { CartProduct, CheckoutData } from "../types";
 
-export const checkout = async (data: CheckoutData, products: CartProduct[]) => {
+export const checkout = async (
+  data: CheckoutData,
+  products: CartProduct[],
+  paymentMethod: PaymentMethods
+) => {
   let user = await getUserByEmail(data.email);
   if (!user) {
     user = await createUser(data);
@@ -20,11 +25,22 @@ export const checkout = async (data: CheckoutData, products: CartProduct[]) => {
     ...data,
     userId: user.id,
     addressId: address.id,
-    paymentMethod: PaymentMethods.MULTIBANCO,
-    status: PaymentStatus.PENDING,
   });
 
   const orderItems = await createOrderItems(order.id, products);
 
-  return { order, orderItems };
+  const payment = await createPayment({
+    orderId: order.id,
+    method: paymentMethod,
+    status: PaymentStatus.PENDING,
+    amount:
+      products.reduce(
+        (acc, product) => acc + product.price * product.quantity,
+        0
+      ) + FRETE,
+    phone: data.phone,
+    email: data.email,
+  });
+
+  return { order, orderItems, payment };
 };

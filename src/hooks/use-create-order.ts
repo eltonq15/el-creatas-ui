@@ -1,5 +1,7 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { createOrder } from "../api/orders-api";
+import { Payment } from "../api/payments-api";
+import { UserData } from "../api/users-api";
 
 export type OrderItem = {
   id: string;
@@ -12,17 +14,15 @@ export type OrderData = {
   addressId: string;
   created_at: string;
   id: string;
-  paymentMethod: string;
-  status: string;
-  userId: string;
   orderItems?: OrderItem[];
+  payment?: Payment;
+  user?: UserData;
+  userId: string;
 };
 
 export type OrderParams = {
   userId: string;
   addressId: string;
-  paymentMethod: string;
-  status: string;
 };
 
 export const useCreateOrder = (

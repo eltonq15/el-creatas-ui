@@ -7,14 +7,7 @@ import {
   CardCvcElement,
 } from "@stripe/react-stripe-js";
 import { StripeCardNumberElement } from "@stripe/stripe-js";
-import {
-  Box,
-  Button,
-  Input,
-  Stack,
-  ToggleButtonGroup,
-  Typography,
-} from "@mui/joy";
+import { Box, Button, Stack, ToggleButtonGroup, Typography } from "@mui/joy";
 import { useNavigate } from "react-router-dom";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 import { OutlinedButton } from "../button/OutlinedButton";
@@ -68,16 +61,25 @@ export const CheckoutPaymentForm = () => {
 
     setIsLoading(true);
 
+    if (selectedPaymentMethod === PaymentMethods.MULTIBANCO) {
+      const { order } = await checkout(
+        checkoutData,
+        cartProducts,
+        PaymentMethods.MULTIBANCO
+      );
+
+      if (order) {
+        return navigate(`/checkout/sucesso?orderId=${order.id}`);
+      }
+    }
+
     const { error: backendError, clientSecret } = await fetch(
       `${process.env.REACT_APP_API_URL}/create-payment-intent`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          paymentMethodType:
-            selectedPaymentMethod === PaymentMethods.MULTIBANCO
-              ? PaymentMethods.MULTIBANCO
-              : PaymentMethods.CARD,
+          paymentMethodType: PaymentMethods.CARD,
           currency: "eur",
           items: cartProducts.map((product) => ({
             ...product,
@@ -110,7 +112,11 @@ export const CheckoutPaymentForm = () => {
     }
     console.log({ paymentIntent, elements });
 
-    const { order } = await checkout(checkoutData, cartProducts);
+    const { order } = await checkout(
+      checkoutData,
+      cartProducts,
+      PaymentMethods.CARD
+    );
 
     setIsLoading(false);
 
@@ -157,7 +163,7 @@ export const CheckoutPaymentForm = () => {
               >
                 Cartão
               </Button>
-              {/* <Button
+              <Button
                 variant={
                   selectedPaymentMethod === "multibanco" ? "solid" : "outlined"
                 }
@@ -177,6 +183,7 @@ export const CheckoutPaymentForm = () => {
               >
                 Multibanco
               </Button>
+              {/* 
               <Button
                 variant={
                   selectedPaymentMethod === "applepay" ? "solid" : "outlined"
@@ -240,13 +247,13 @@ export const CheckoutPaymentForm = () => {
                 border={"1px solid #000"}
                 borderRadius={4}
                 padding={2}
-                gap={2}
+                // gap={2}
               >
-                <Stack>
-                  <Typography level="body-sm" width={"100%"} textAlign={"left"}>
+                {/* <Stack> */}
+                {/* <Typography level="body-sm" width={"100%"} textAlign={"left"}>
                     Email
-                  </Typography>
-                  <Input
+                  </Typography> */}
+                {/* <Input
                     id="multibanco-element"
                     placeholder="ex: 6Y6gP@example.com"
                     defaultValue={checkoutData.email}
@@ -257,11 +264,11 @@ export const CheckoutPaymentForm = () => {
                         outline: "none",
                       },
                     }}
-                  />
-                  <Typography level="body-sm" paddingTop={2}>
-                    Receberá as instruções de pagamento por email
-                  </Typography>
-                </Stack>
+                  /> */}
+                <Typography level="body-sm">
+                  Após confirmar, receberá as instruções de pagamento por email
+                </Typography>
+                {/* </Stack> */}
               </Stack>
             )}
           </Stack>

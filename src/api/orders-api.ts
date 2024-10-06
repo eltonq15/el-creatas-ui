@@ -1,5 +1,4 @@
-import { OrderParams } from "../hooks/use-create-order";
-import { OrderData } from "../hooks/use-order-data";
+import { OrderData, OrderParams } from "../hooks/use-create-order";
 
 export const createOrder = async (data: OrderParams): Promise<OrderData> => {
   const res = await fetch(`${process.env.REACT_APP_API_URL}/orders`, {
