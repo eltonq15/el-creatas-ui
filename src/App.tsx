@@ -6,6 +6,7 @@ import { Products } from "./pages/products/Products";
 import { Checkout } from "./pages/checkout/Checkout";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import "@fontsource/inter";
+import { Footer } from "./components/footer/Footer";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <Route path="/contato" element={<>Contato</>} />
         <Route path="/checkout/*" element={<Checkout />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
