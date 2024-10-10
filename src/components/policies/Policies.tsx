@@ -13,7 +13,7 @@ export const Policies = () => {
         alignItems: "center",
         flexDirection: "row",
         width: "100%",
-        gap: 2,
+        gap: 1,
         fontFamily: "math, serif",
         backgroundColor: "#ede8de",
       }}

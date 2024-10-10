@@ -9,13 +9,13 @@ export const Footer = () => {
         justifyContent: "center",
         alignItems: "center",
         gap: 4,
-        padding: "24px",
+        padding: "12px",
         fontFamily: "math, serif",
         backgroundColor: "#ede8de",
       }}
     >
       <Policies />
-      <Typography level="body-md" fontFamily={"math, serif"} letterSpacing={2}>
+      <Typography level="body-sm" fontFamily={"math, serif"} letterSpacing={2}>
         El Creatas © 2024. Todos os direitos reservados.
       </Typography>
     </Stack>

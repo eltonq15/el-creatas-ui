@@ -22,6 +22,8 @@ export const PoliciesModal = ({
           fontFamily: "math, serif",
           letterSpacing: 2,
           backgroundColor: "transparent",
+          transition: "all 0.3s ease",
+          fontSize: "12px",
           color: "black",
           "&:hover": { backgroundColor: "transparent" },
         }}
@@ -38,7 +40,7 @@ export const PoliciesModal = ({
         <Sheet
           variant="outlined"
           sx={{
-            maxWidth: "60dvw",
+            maxWidth: "80dvw",
             maxHeight: 600,
             borderRadius: "md",
             p: 3,
