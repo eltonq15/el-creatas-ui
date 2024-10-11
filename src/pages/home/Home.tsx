@@ -1,13 +1,12 @@
-import Aura from "../../assets/formatted/aura.jpg";
 import Background from "../../assets/background-2.jpg";
-import Blossom from "../../assets/formatted/blossom.jpg";
-import Elegance from "../../assets/formatted/elegance.jpg";
-import Essence from "../../assets/formatted/essence.jpg";
-import Harmonia from "../../assets/formatted/harmonia.jpg";
-import Refine from "../../assets/formatted/refine.jpg";
-import React from "react";
-import { useGetProducts } from "../../hooks/use-get-products";
+import Aura from "../../assets/formatted/aura.png";
+import Blossom from "../../assets/formatted/blossom.png";
+import Elegance from "../../assets/formatted/elegance.png";
+import Essence from "../../assets/formatted/essence.png";
+import Harmonia from "../../assets/formatted/harmonia.png";
+import Refine from "../../assets/formatted/refine.png";
 import { AddToCartButton } from "../../components/add-to-cart-button/AddToCartButton";
+import { useGetProducts } from "../../hooks/use-get-products";
 import "./styles.scss";
 
 export const Home = () => {

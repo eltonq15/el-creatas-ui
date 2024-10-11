@@ -7,12 +7,12 @@ import {
   CardTitle,
 } from "../../components/shadcn/components/ui/card";
 
-import Aura from "../../assets/formatted/aura.jpg";
-import Blossom from "../../assets/formatted/blossom.jpg";
-import Elegance from "../../assets/formatted/elegance.jpg";
-import Essence from "../../assets/formatted/essence.jpg";
-import Harmonia from "../../assets/formatted/harmonia.jpg";
-import Refine from "../../assets/formatted/refine.jpg";
+import Aura from "../../assets/formatted/aura.png";
+import Blossom from "../../assets/formatted/blossom.png";
+import Elegance from "../../assets/formatted/elegance.png";
+import Essence from "../../assets/formatted/essence.png";
+import Harmonia from "../../assets/formatted/harmonia.png";
+import Refine from "../../assets/formatted/refine.png";
 
 import { useGetProducts } from "../../hooks/use-get-products";
 import Product1 from "../../assets/product-1.jpg";

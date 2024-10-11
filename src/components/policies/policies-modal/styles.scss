@@ -1,0 +1,6 @@
+.MuiSheet-root {
+  &::-webkit-scrollbar {
+    width: 0 !important; /* Hide scrollbar */
+    height: 0 !important; /* Hide scrollbar */
+  }
+}

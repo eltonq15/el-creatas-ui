@@ -37,6 +37,7 @@
       background-color: #ede8de;
       display: flex;
       overflow-x: scroll;
+      scroll-behavior: smooth;
 
       .best-sellers-card-container {
         display: flex;

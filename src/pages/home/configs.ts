@@ -1,26 +1,26 @@
 export const images = [
   {
-    original: "/formatted/aura.jpg",
-    thumbnail: "/formatted/aura.jpg",
+    original: "/formatted/aura.png",
+    thumbnail: "/formatted/aura.png",
   },
   {
-    original: "/formatted/blossom.jpg",
-    thumbnail: "/formatted/blossom.jpg",
+    original: "/formatted/blossom.png",
+    thumbnail: "/formatted/blossom.png",
   },
   {
-    original: "/formatted/elegance.jpg",
-    thumbnail: "/formatted/elegance.jpg",
+    original: "/formatted/elegance.png",
+    thumbnail: "/formatted/elegance.png",
   },
   {
-    original: "/formatted/essence.jpg",
-    thumbnail: "/formatted/essence.jpg",
+    original: "/formatted/essence.png",
+    thumbnail: "/formatted/essence.png",
   },
   {
-    original: "/formatted/harmonia.jpg",
-    thumbnail: "/formatted/harmonia.jpg",
+    original: "/formatted/harmonia.png",
+    thumbnail: "/formatted/harmonia.png",
   },
   {
-    original: "/formatted/refine.jpg",
-    thumbnail: "/formatted/refine.jpg",
+    original: "/formatted/refine.png",
+    thumbnail: "/formatted/refine.png",
   },
 ];

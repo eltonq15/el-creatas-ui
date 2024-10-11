@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Modal, ModalClose, Sheet, Stack, Typography } from "@mui/joy";
 
+import "./styles.scss";
+
 export const PoliciesModal = ({
   label,
   title,
@@ -40,7 +42,7 @@ export const PoliciesModal = ({
         <Sheet
           variant="outlined"
           sx={{
-            maxWidth: "80dvw",
+            width: "60dvw",
             maxHeight: 600,
             borderRadius: "md",
             p: 3,
@@ -58,9 +60,7 @@ export const PoliciesModal = ({
           >
             {title}
           </Typography>
-          <Stack gap={2} overflow={"scroll"}>
-            {content}
-          </Stack>
+          <Stack gap={2}>{content}</Stack>
         </Sheet>
       </Modal>
     </>
