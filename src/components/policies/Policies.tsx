@@ -1,6 +1,7 @@
 import { Stack } from "@mui/joy";
 import { Privacy } from "./privacy/Privacy";
 import { Shipping } from "./shipping/Shipping";
+import { ReturnAndRefund } from "./return-and-refund/ReturnAndRefund";
 import { TermsAndConditions } from "./terms-and-conditions/TermsAndConditions";
 import { ComplaintsBook } from "./complaints/ComplaintsBook";
 
@@ -16,10 +17,12 @@ export const Policies = () => {
         gap: 1,
         fontFamily: "math, serif",
         backgroundColor: "#ede8de",
+        flexWrap: "wrap",
       }}
     >
       <Privacy />
       <Shipping />
+      <ReturnAndRefund />
       <TermsAndConditions />
       <ComplaintsBook />
     </Stack>

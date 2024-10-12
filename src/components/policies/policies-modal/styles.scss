@@ -4,3 +4,7 @@
     height: 0 !important; /* Hide scrollbar */
   }
 }
+.MuiBox-root {
+  padding: 0 !important;
+  max-width: unset !important;
+}

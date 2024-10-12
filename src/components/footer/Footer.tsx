@@ -8,10 +8,11 @@ export const Footer = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        gap: 4,
+        gap: 3,
         padding: "12px",
         fontFamily: "math, serif",
         backgroundColor: "#ede8de",
+        borderTop: "1px solid #bbb",
       }}
     >
       <Policies />
