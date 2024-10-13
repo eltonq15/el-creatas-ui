@@ -1,7 +1,7 @@
 import { MAX_ALLOWED_ITEM_QUANTITY } from "../../constants";
 import { Product } from "../../hooks/use-get-products";
 import { useCartStore } from "../../stores/cart-store/cart-store";
-import { SolidButton } from "../button/SolidButton";
+import { OutlinedButton } from "../button/OutlinedButton";
 
 export const AddToCartButton = ({ product }: { product: Product }) => {
   const { cartProducts, setCartProducts, setIsSnackbarOpen } = useCartStore();
@@ -30,9 +30,9 @@ export const AddToCartButton = ({ product }: { product: Product }) => {
 
   return (
     <>
-      <SolidButton onClick={() => handleAddToCart(product)}>
+      <OutlinedButton onClick={() => handleAddToCart(product)}>
         Adicionar ao carrinho
-      </SolidButton>
+      </OutlinedButton>
     </>
   );
 };
