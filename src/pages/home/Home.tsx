@@ -53,7 +53,7 @@ export const Home = () => {
             )}
           </div>
         </div>
-        <h1>Where minimalist style takes shape in every detail</h1>
+        <h1>minimalist in every detail</h1>
       </div>
       <div className="image-container">
         <img src={Background} alt="Background" />
