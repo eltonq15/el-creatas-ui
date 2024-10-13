@@ -12,3 +12,5 @@ export enum PaymentStatus {
 }
 
 export const FRETE = 4.8;
+
+export const MAX_ALLOWED_ITEM_QUANTITY = 10;

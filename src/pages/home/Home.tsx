@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import Background from "../../assets/background-2.jpg";
 import Aura from "../../assets/formatted/aura.png";
 import Blossom from "../../assets/formatted/blossom.png";
@@ -11,23 +10,7 @@ import { useGetProducts } from "../../hooks/use-get-products";
 import "./styles.scss";
 
 export const Home = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
   const { data: products } = useGetProducts();
-
-  //on scroll of the scrollRef, console.log the current scroll position
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (scrollRef.current) {
-        console.log(scrollRef.current.scrollLeft);
-      }
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const imageComponentsMap = {
     Aura,
@@ -45,7 +28,7 @@ export const Home = () => {
       </div>
       <div className="best-sellers-container">
         <h1>Home & Decor</h1>
-        <div className="best-sellers-slider" ref={scrollRef}>
+        <div className="best-sellers-slider">
           <div className="best-sellers-card-container">
             {[1, 2].flatMap(() =>
               products?.map((product) => (

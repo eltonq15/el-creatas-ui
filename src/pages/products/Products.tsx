@@ -15,14 +15,11 @@ import Harmonia from "../../assets/formatted/harmonia.png";
 import Refine from "../../assets/formatted/refine.png";
 
 import { useGetProducts } from "../../hooks/use-get-products";
-import Product1 from "../../assets/product-1.jpg";
-import Product2 from "../../assets/product-2.jpg";
-import Product3 from "../../assets/product-3.jpg";
-import "./styles.scss";
 import { Typography } from "@mui/joy";
 import { AddToCartButton } from "../../components/add-to-cart-button/AddToCartButton";
 
-const productImages = [Product1, Product2, Product3];
+import "./styles.scss";
+
 const imagesMap = {
   Aura,
   Blossom,
@@ -45,23 +42,6 @@ export const Products = () => {
           material para criar peças que unem arte e funcionalidade, tornando
           qualquer ambiente especial.
         </h3>
-        <span
-          style={{
-            display: "flex",
-            gap: 12,
-            width: "80%",
-            justifyContent: "space-evenly",
-          }}
-        >
-          {productImages.map((Image: any) => (
-            <img
-              key={Image}
-              src={Image}
-              alt="products"
-              style={{ width: "100px", height: "100px", borderRadius: "50%" }}
-            />
-          ))}
-        </span>
       </div>
 
       <div

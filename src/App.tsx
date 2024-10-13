@@ -7,8 +7,11 @@ import { Checkout } from "./pages/checkout/Checkout";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import "@fontsource/inter";
 import { Footer } from "./components/footer/Footer";
+import { AddToCartSnackbar } from "./components/add-to-cart-snackbar/AddToCartSnackbar";
+import { useCartStore } from "./stores/cart-store/cart-store";
 
 const App: React.FC = () => {
+  const { isSnackbarOpen, setIsSnackbarOpen } = useCartStore();
   return (
     <Router>
       <NavHeader />
@@ -22,6 +25,7 @@ const App: React.FC = () => {
         <Route path="/checkout/*" element={<Checkout />} />
       </Routes>
       <Footer />
+      <AddToCartSnackbar open={isSnackbarOpen} setOpen={setIsSnackbarOpen} />
     </Router>
   );
 };

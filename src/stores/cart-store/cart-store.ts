@@ -21,10 +21,13 @@ export const useCartStore = create<ICartStore>((set) => ({
       ),
     });
   },
-
   clearCart: () => {
     localStorage.setItem("cartProducts", JSON.stringify([]));
 
     return set({ cartProducts: [] });
+  },
+  isSnackbarOpen: false,
+  setIsSnackbarOpen: (value) => {
+    set({ isSnackbarOpen: value });
   },
 }));

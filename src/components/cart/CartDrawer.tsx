@@ -26,6 +26,7 @@ import {
 } from "../shadcn/components/ui/select";
 import { Typography } from "@mui/joy";
 import { SolidButton } from "../button/SolidButton";
+import { MAX_ALLOWED_ITEM_QUANTITY } from "../../constants";
 
 import "./styles.scss";
 
@@ -69,7 +70,10 @@ export const CartDrawer = () => {
                       <SelectValue placeholder="Quantidade" />
                     </SelectTrigger>
                     <SelectContent>
-                      {Array.from({ length: 31 }, (_, i) => i).map((i) => (
+                      {Array.from(
+                        { length: MAX_ALLOWED_ITEM_QUANTITY + 1 },
+                        (_, i) => i
+                      ).map((i) => (
                         <SelectItem key={i} value={i.toString()}>
                           {i || "Remover item"}
                         </SelectItem>
@@ -110,6 +114,29 @@ export const CartDrawer = () => {
           </Link>
         </SheetClose>
       </SheetFooter>
+      {cartProducts.some(
+        (product) => product.quantity === MAX_ALLOWED_ITEM_QUANTITY
+      ) && (
+        <Typography sx={{ textAlign: "left", paddingTop: 2 }}>
+          *Para comprar mais de 10 unidades da mesma peça, por favor, entre em
+          contato através do email{" "}
+          <b>
+            <a href="mailto:vendas@elcreatas.com">vendas@elcreatas.com</a>
+          </b>{" "}
+          ou através do whatsapp{" "}
+          <b>
+            <a
+              href="https://wa.me/351963761170?text=Ola%2C%20gostava%20de%20comprar%20mais%20de%2010%20pe%C3%A7as."
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" "}
+              +351963761170
+            </a>
+          </b>
+          .
+        </Typography>
+      )}
     </SheetContent>
   );
 };

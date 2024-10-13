@@ -9,7 +9,7 @@ import { SolidButton } from "../button/SolidButton";
 
 type AddToCartSnackbarProps = {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (value: boolean) => void;
 };
 
 export const AddToCartSnackbar = ({
@@ -30,7 +30,6 @@ export const AddToCartSnackbar = ({
         background: "#ede8de",
         maxWidth: 360,
         direction: "column",
-        position: "fixed",
         top: 100,
       }}
     >

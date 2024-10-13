@@ -33,23 +33,17 @@
     }
 
     .best-sellers-slider {
-      height: 450px;
+      height: 360px;
       background-color: #ede8de;
       display: flex;
-      overflow-x: scroll;
-      scroll-behavior: smooth;
 
       .best-sellers-card-container {
         display: flex;
-        gap: 24px;
+        animation: carousel 50s linear infinite;
 
         .best-sellers-card {
           width: 300px;
-          height: 400px;
-          padding: 24px;
-          width: 300px;
-          height: 400px;
-          padding: 24px;
+          padding: 0 24px;
           background-color: #ede8de;
           display: flex;
           flex-direction: column;
@@ -73,5 +67,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes carousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
