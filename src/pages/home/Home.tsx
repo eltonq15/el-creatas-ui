@@ -1,4 +1,5 @@
-import Background from "../../assets/background-2.jpg";
+import Background2 from "../../assets/background-2.jpg";
+import BackgroundVideo from "../../assets/background-video.mp4";
 import Aura from "../../assets/formatted/aura.png";
 import Blossom from "../../assets/formatted/blossom.png";
 import Elegance from "../../assets/formatted/elegance.png";
@@ -7,10 +8,13 @@ import Harmonia from "../../assets/formatted/harmonia.png";
 import Refine from "../../assets/formatted/refine.png";
 import { AddToCartButton } from "../../components/add-to-cart-button/AddToCartButton";
 import { useGetProducts } from "../../hooks/use-get-products";
+import { useIsMobile } from "../../hooks/use-is-mobile";
+
 import "./styles.scss";
 
 export const Home = () => {
   const { data: products } = useGetProducts();
+  const isMobile = useIsMobile();
 
   const imageComponentsMap = {
     Aura,
@@ -24,7 +28,7 @@ export const Home = () => {
   return (
     <div className="home-container">
       <div className="image-container">
-        <img src={Background} alt="Background" />
+        <img src={Background2} alt="Background" />
       </div>
       <div className="best-sellers-container">
         <h1>Home & Decor</h1>
@@ -55,9 +59,13 @@ export const Home = () => {
         </div>
         <h1>minimalist in every detail</h1>
       </div>
-      <div className="image-container">
-        <img src={Background} alt="Background" />
-      </div>
+      {isMobile ? (
+        <video src={BackgroundVideo} autoPlay muted loop />
+      ) : (
+        <div className="image-container">
+          <img src={Background2} alt="Background" />
+        </div>
+      )}
     </div>
   );
 };
