@@ -142,7 +142,7 @@ export const Contact = () => {
               alignItems: "center",
             }}
           >
-            Agrademos pela sua mensagem. Responderemos em breve.
+            Agradecemos pela sua mensagem. Responderemos em breve.
           </Typography>
         </Stack>
       ) : (
