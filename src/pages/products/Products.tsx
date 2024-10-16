@@ -35,7 +35,7 @@ export const Products = () => {
     <div className="products-page-container">
       <div className="products-page-header">
         <h1>JESMONITE</h1>
-        <h3 style={{ width: "80%", textAlign: "center" }}>
+        <h3 style={{ width: "80%", textAlign: "justify" }}>
           O jesmonite é um material versátil, ecológico e durável, que permite
           criar formas e texturas únicas. É ideal para quem valoriza tanto a
           estética quanto a sustentabilidade. Na el Creatas utilizamos esse
@@ -46,11 +46,12 @@ export const Products = () => {
 
       <div
         style={{
+          alignItems: "center",
+          backgroundColor: "#ede8de",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "space-evenly",
           gap: 24,
+          justifyContent: "space-evenly",
           padding: 36,
         }}
       >

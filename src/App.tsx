@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NavHeader } from "./components/nav-header/NavHeader";
 import { Home } from "./pages/home/Home";
 import { Products } from "./pages/products/Products";
+import { Contact } from "./pages/contact/Contact";
 import { Checkout } from "./pages/checkout/Checkout";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import "@fontsource/inter";
@@ -20,8 +21,8 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/produtos" element={<Products />} />
-        <Route path="/sobre" element={<>Sobre</>} />
-        <Route path="/contato" element={<>Contato</>} />
+        {/* <Route path="/sobre" element={<About />} /> */}
+        <Route path="/contato" element={<Contact />} />
         <Route path="/checkout/*" element={<Checkout />} />
       </Routes>
       <Footer />

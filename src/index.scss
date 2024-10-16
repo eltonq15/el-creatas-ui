@@ -6,6 +6,13 @@
 
 * {
   box-sizing: border-box;
+  // display: flex;
+  // flex-direction: column;
+  // margin: 0;
+  // padding: 0;
+  // font-family: "math", serif;
+  // font-size: 24px;
+  // min-height: 100dvh;
 }
 
 html {
@@ -26,6 +33,16 @@ body {
   font-size: 24px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  font-family: "math", serif;
+  font-size: 24px;
+  min-height: 100dvh;
 }
 
 code {

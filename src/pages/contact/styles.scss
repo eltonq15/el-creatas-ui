@@ -1,0 +1,12 @@
+input:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s !important;
+  -webkit-text-stroke-color: red !important;
+}
+
+.MuiInput-root {
+  --Input-focusedHighlight: transparent !important;
+}
+
+.MuiTextarea-root {
+  --Textarea-focusedHighlight: transparent !important;
+}

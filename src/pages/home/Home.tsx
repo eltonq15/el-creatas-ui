@@ -60,7 +60,6 @@ export const Home = () => {
         <h1>minimalist in every detail</h1>
       </div>
       {isMobile ? (
-        // play only the first 5 seconds
         <video src={BackgroundVideo} autoPlay muted loop playsInline />
       ) : (
         <div className="image-container">
