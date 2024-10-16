@@ -35,7 +35,7 @@ export const Contact = () => {
 
   const onSubmit = async (data: ContactForm) => {
     try {
-      const response = await fetch("http://localhost:1234/api/send-email", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
