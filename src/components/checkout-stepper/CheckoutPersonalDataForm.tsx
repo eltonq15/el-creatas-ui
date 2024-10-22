@@ -6,6 +6,7 @@ import { CountrySelect } from "../country-select/CountrySelect";
 import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 import { useNavigate } from "react-router-dom";
 import { SolidButton } from "../button/SolidButton";
+import { useUser } from "@clerk/clerk-react";
 
 import "./styles.scss";
 
@@ -22,6 +23,7 @@ const personalDataSchema = z.object({
 type PersonalData = z.infer<typeof personalDataSchema>;
 
 export const CheckoutPersonalDataForm = () => {
+  const { user } = useUser();
   const {
     register,
     handleSubmit,
@@ -46,7 +48,7 @@ export const CheckoutPersonalDataForm = () => {
           {...register("fullName")}
           name="fullName"
           placeholder="ex: João Silva"
-          value={checkoutData.fullName}
+          value={checkoutData.fullName || user?.fullName || ""}
           onChange={(e) => {
             setCheckoutData({ fullName: e.target.value });
             e.target.focus();
@@ -62,7 +64,9 @@ export const CheckoutPersonalDataForm = () => {
         <Input
           {...register("email")}
           placeholder="ex: joao@example.com"
-          defaultValue={checkoutData.email}
+          defaultValue={
+            checkoutData.email || user?.emailAddresses[0]?.emailAddress || ""
+          }
           onChange={(e) => {
             setCheckoutData({ email: e.target.value });
             e.target.focus();
@@ -80,7 +84,9 @@ export const CheckoutPersonalDataForm = () => {
           <Input
             {...register("phone")}
             placeholder="ex: 912345678"
-            value={checkoutData.phone}
+            value={
+              checkoutData.phone || user?.primaryPhoneNumber?.phoneNumber || ""
+            }
             onChange={(e) => {
               setCheckoutData({ phone: e.target.value });
               e.target.focus();

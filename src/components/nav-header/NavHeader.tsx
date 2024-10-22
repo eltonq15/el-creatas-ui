@@ -1,7 +1,12 @@
+import { useEffect, useRef } from "react";
 import { Logo } from "../logo/Logo";
 import { Cart } from "../cart/Cart";
 import { MobileMenu } from "../mobile-menu/MobileMenu";
-import { useEffect, useRef } from "react";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+
+import { SolidButton } from "../button/SolidButton";
+import { Link } from "react-router-dom";
+import { OutlinedButton } from "../button/OutlinedButton";
 
 import "./styles.scss";
 
@@ -38,6 +43,17 @@ export const NavHeader = () => {
           right: "48px",
         }}
       >
+        <SignedOut>
+          <SolidButton>
+            <Link to="/sign-in">Iniciar Sessão</Link>
+          </SolidButton>
+          <OutlinedButton>
+            <Link to="/sign-up">Registar</Link>
+          </OutlinedButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
         <Cart />
       </span>
     </nav>

@@ -10,6 +10,8 @@ import "@fontsource/inter";
 import { Footer } from "./components/footer/Footer";
 import { AddToCartSnackbar } from "./components/add-to-cart-snackbar/AddToCartSnackbar";
 import { useCartStore } from "./stores/cart-store/cart-store";
+import { SignInPage } from "./pages/sign-in/SignIn";
+import { SignUpPage } from "./pages/sign-up/SignUp";
 
 const App: React.FC = () => {
   const { isSnackbarOpen, setIsSnackbarOpen } = useCartStore();
@@ -19,6 +21,8 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-up/*" element={<SignUpPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/produtos" element={<Products />} />
         {/* <Route path="/sobre" element={<About />} /> */}
