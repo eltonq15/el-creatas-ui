@@ -1,6 +1,6 @@
 import { Link, Stack, Typography } from "@mui/joy";
 import { formatToEuros } from "../../utils/formatter";
-import { PaymentMethods } from "../../constants";
+import { PaymentMethods, PaymentStatus } from "../../constants";
 import { OrderData } from "../../hooks/use-create-order";
 
 export const OrderDetails = ({ orderData }: { orderData: OrderData }) => {
@@ -37,7 +37,43 @@ export const OrderDetails = ({ orderData }: { orderData: OrderData }) => {
       </Typography>
       <Typography alignSelf="start" level="body-md">
         <b>Status do pagamento: </b>
-        {orderData?.payment?.status}
+        {orderData?.payment?.status === PaymentStatus.PENDING ? (
+          <Typography
+            sx={{
+              color: "orange",
+              border: "2px solid orange",
+              padding: "2px 4px",
+              borderRadius: "4px",
+              fontSize: "12px",
+            }}
+          >
+            Pendente
+          </Typography>
+        ) : orderData?.payment?.status === PaymentStatus.PAID ? (
+          <Typography
+            sx={{
+              color: "green",
+              border: "2px solid green",
+              padding: "2px 4px",
+              borderRadius: "4px",
+              fontSize: "12px",
+            }}
+          >
+            Pagamento concluido
+          </Typography>
+        ) : (
+          <Typography
+            sx={{
+              color: "red",
+              border: "2px solid red",
+              padding: "2px 4px",
+              borderRadius: "4px",
+              fontSize: "12px",
+            }}
+          >
+            Cancelado
+          </Typography>
+        )}
       </Typography>
       {orderData?.payment?.method === PaymentMethods.MULTIBANCO && (
         <Stack>
