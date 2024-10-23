@@ -39,6 +39,19 @@ export const CheckoutPersonalDataForm = () => {
     <form
       className="personal-data-form"
       onSubmit={handleSubmit(() => {
+        if (!checkoutData.fullName && user?.fullName) {
+          setCheckoutData({ fullName: user?.fullName });
+        }
+        if (!checkoutData.email && user?.emailAddresses[0]?.emailAddress) {
+          setCheckoutData({
+            email: user?.emailAddresses[0]?.emailAddress,
+          });
+        }
+
+        if (!checkoutData.phone && user?.primaryPhoneNumber?.phoneNumber) {
+          setCheckoutData({ phone: user?.primaryPhoneNumber?.phoneNumber });
+        }
+
         navigate("/checkout/endereco");
       })}
     >
