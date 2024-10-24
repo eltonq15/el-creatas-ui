@@ -73,59 +73,73 @@ export const CheckoutPaymentForm = () => {
       }
     }
 
-    const { error: backendError, clientSecret } = await fetch(
-      `${process.env.REACT_APP_API_URL}/create-payment-intent`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          paymentMethodType: PaymentMethods.CARD,
-          currency: "eur",
-          items: [
-            ...cartProducts.map((product) => ({
-              ...product,
-              amount: (product.price * product.quantity * 100).toFixed(0),
-            })),
-            {
-              id: "frete",
-              name: "Frete",
-              price: FRETE,
-              quantity: 1,
-              amount: (FRETE * 100).toFixed(0),
-            },
-          ],
-          customer: checkoutData,
-        }),
-      }
-    ).then((res) => res.json());
-
-    if (backendError) {
-      setMessage(backendError.message);
-      setIsLoading(false);
-      return;
-    }
-
-    const { error: cardPaymentError, paymentIntent } =
-      await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(
-            CardNumberElement
-          ) as StripeCardNumberElement,
-        },
-      });
-
-    if (cardPaymentError) {
-      setMessage(cardPaymentError.message as string);
-      setIsLoading(false);
-      return;
-    }
-    console.log({ paymentIntent, elements });
-
     const { order } = await checkout(
       checkoutData,
       cartProducts,
       PaymentMethods.CARD
     );
+
+    if (!order) {
+      return;
+    }
+
+    if (selectedPaymentMethod === PaymentMethods.CARD) {
+      const { error: backendError, clientSecret } = await fetch(
+        `${process.env.REACT_APP_API_URL}/create-payment-intent`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            paymentMethodType: PaymentMethods.CARD,
+            currency: "eur",
+            items: [
+              ...cartProducts.map((product) => ({
+                ...product,
+                amount: (product.price * product.quantity * 100).toFixed(0),
+              })),
+              {
+                id: "frete",
+                name: "Frete",
+                price: FRETE,
+                quantity: 1,
+                amount: (FRETE * 100).toFixed(0),
+              },
+            ],
+            customer: checkoutData,
+            metadata: {
+              orderId: order.id,
+              name: checkoutData.fullName,
+              email: checkoutData.email,
+              phone: checkoutData.phone,
+              address: checkoutData.shippingAddress,
+            },
+          }),
+        }
+      ).then((res) => res.json());
+
+      if (backendError) {
+        setMessage(backendError.message);
+        setIsLoading(false);
+        return;
+      }
+
+      const { error: cardPaymentError } = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: elements.getElement(
+              CardNumberElement
+            ) as StripeCardNumberElement,
+          },
+        }
+      );
+
+      if (cardPaymentError) {
+        setMessage(cardPaymentError.message as string);
+        setIsLoading(false);
+        return;
+      }
+    }
 
     setIsLoading(false);
 
