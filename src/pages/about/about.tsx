@@ -208,6 +208,7 @@ export const About = () => {
             muted
             width={256}
             height={256}
+            playsInline
           />
           <video
             src={PorQueJesmonite2}
@@ -216,6 +217,7 @@ export const About = () => {
             muted
             width={256}
             height={256}
+            playsInline
           />
         </Stack>
       </Stack>
