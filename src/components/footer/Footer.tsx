@@ -44,7 +44,7 @@ export const Footer = () => {
         </Link>
 
         <Link
-          href="https://www.facebook.com/elcreatas"
+          href="https://www.facebook.com/profile.php?id=61566935308631"
           target="_blank"
           rel="noreferrer"
           underline="none"
@@ -78,7 +78,7 @@ export const Footer = () => {
         letterSpacing={2}
         sx={{ textAlign: "center" }}
       >
-        El Creatas © 2024. Todos os direitos reservados.
+        el Creatas © 2024. Todos os direitos reservados.
       </Typography>
     </Stack>
   );
