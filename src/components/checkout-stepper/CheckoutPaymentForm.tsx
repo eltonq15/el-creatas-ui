@@ -107,11 +107,11 @@ export const CheckoutPaymentForm = () => {
             ],
             customer: checkoutData,
             metadata: {
-              orderId: order.id,
-              name: checkoutData.fullName,
-              email: checkoutData.email,
-              phone: checkoutData.phone,
               address: checkoutData.shippingAddress,
+              email: checkoutData.email,
+              name: checkoutData.fullName,
+              orderId: order.id,
+              phone: checkoutData.phone,
             },
           }),
         }

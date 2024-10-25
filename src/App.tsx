@@ -12,6 +12,7 @@ import { AddToCartSnackbar } from "./components/add-to-cart-snackbar/AddToCartSn
 import { useCartStore } from "./stores/cart-store/cart-store";
 import { SignInPage } from "./pages/sign-in/SignIn";
 import { SignUpPage } from "./pages/sign-up/SignUp";
+import { About } from "./pages/about/about";
 
 const App: React.FC = () => {
   const { isSnackbarOpen, setIsSnackbarOpen } = useCartStore();
@@ -25,7 +26,7 @@ const App: React.FC = () => {
         <Route path="/sign-up/*" element={<SignUpPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/produtos" element={<Products />} />
-        {/* <Route path="/sobre" element={<About />} /> */}
+        <Route path="/sobre" element={<About />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="/checkout/*" element={<Checkout />} />
       </Routes>

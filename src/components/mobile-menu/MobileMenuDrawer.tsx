@@ -21,10 +21,10 @@ export const MobileMenuDrawer = () => {
             <NavLink to="/produtos">PRODUTOS</NavLink>
           </SheetClose>
           <hr />
-          {/* <SheetClose asChild>
+          <SheetClose asChild>
             <NavLink to="/sobre">SOBRE</NavLink>
           </SheetClose>
-          <hr /> */}
+          <hr />
           <SheetClose asChild>
             <NavLink to="/contacto">CONTACTO</NavLink>
           </SheetClose>
