@@ -19,7 +19,8 @@ span {
     border-radius: 50%;
     width: 16px;
     height: 16px;
-    font-family: Math, Arial, Helvetica, sans-serif;
+    font-family: "Arima", serif;
+    font-weight: 400;
     font-style: normal;
   }
 }
@@ -33,13 +34,15 @@ span {
 #cart-drawer-table {
   font-size: 16px;
   margin-top: 36px;
-  font-family: math;
+  font-family: "Arima", serif;
+  font-weight: 400;
 }
 
 #cart-drawer-confirm-button {
   font-size: 16px;
   margin-top: 28px;
-  font-family: math;
+  font-family: "Arima", serif;
+  font-weight: 400;
   right: 24px;
   position: fixed;
 }

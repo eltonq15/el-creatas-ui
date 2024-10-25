@@ -81,7 +81,7 @@ export const ComplaintsBook = () => {
             </Link>{" "}
             ou pelo telefone{" "}
             <Link href="tel:+351963761170">
-              <b>963 761 170</b>
+              <b>+351 963 761 170 </b>
             </Link>{" "}
             para esclarecer qualquer questão antes de utilizar o Livro de
             Reclamações.

@@ -31,7 +31,7 @@ export const Home = () => {
         <img src={Background2} alt="Background" />
       </div>
       <div className="best-sellers-container">
-        <h1>Home & Decor</h1>
+        <h1>Home ﹠ Decor</h1>
         <div className="best-sellers-slider">
           <div className="best-sellers-card-container">
             {[1, 2].flatMap(() =>

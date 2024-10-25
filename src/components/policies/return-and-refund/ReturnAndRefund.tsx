@@ -47,9 +47,9 @@ export const ReturnAndRefund = () => {
             <Link href="mailto:devolucao@elcreatas.com">
               <b>devolucao@elcreatas.com</b>
             </Link>{" "}
-            ou pelo telefone
+            ou pelo telefone{" "}
             <Link href="tel:+351963761170">
-              <b>963 761 170</b>
+              <b>+351 963 761 170</b>
             </Link>
             .
           </Box>
@@ -104,7 +104,7 @@ export const ReturnAndRefund = () => {
             </Link>{" "}
             ou pelo telefone{" "}
             <Link href="tel:+351963761170">
-              <b>963 761 170</b>
+              <b>+351 963 761 170</b>
             </Link>
             .
           </Box>

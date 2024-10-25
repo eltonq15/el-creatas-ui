@@ -65,7 +65,7 @@ export const Contact = () => {
         gap: "1rem",
         paddingTop: "130px",
         paddingBottom: "48px",
-        fontFamily: "math, serif",
+        fontFamily: "inherit",
         backgroundColor: "#ede8de",
         display: "flex",
         flexDirection: "column",
@@ -78,7 +78,7 @@ export const Contact = () => {
         level="h1"
         sx={{
           textAlign: "center",
-          fontFamily: "math, serif",
+          fontFamily: "inherit",
           fontWeight: "400",
           fontSize: "24px",
           lineHeight: "36px",
@@ -92,7 +92,7 @@ export const Contact = () => {
           textAlign: "justify",
           fontSize: "24px",
           lineHeight: "36px",
-          fontFamily: "math, serif",
+          fontFamily: "inherit",
           fontWeight: "400",
           width: "80%",
         }}
@@ -111,7 +111,7 @@ export const Contact = () => {
           textAlign: "justify",
           fontSize: "24px",
           lineHeight: "36px",
-          fontFamily: "math, serif",
+          fontFamily: "inherit",
           fontWeight: "400",
           width: "80%",
         }}
@@ -138,7 +138,7 @@ export const Contact = () => {
               textAlign: "center",
               fontSize: "24px",
               lineHeight: "36px",
-              fontFamily: "math, serif",
+              fontFamily: "inherit",
               fontWeight: "600",
               width: "80%",
               justifyContent: "center",

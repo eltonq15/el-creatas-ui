@@ -11,6 +11,7 @@ export const SignUpPage = () => {
         flexGrow: 1,
         backgroundColor: "#ede8de",
         paddingTop: "48px !important",
+        minHeight: "100vh",
       }}
     >
       <SignUp signInUrl="/sign-in" path="/sign-up" />

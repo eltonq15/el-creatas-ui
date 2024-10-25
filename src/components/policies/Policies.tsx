@@ -15,8 +15,8 @@ export const Policies = () => {
         flexDirection: "row",
         width: "100%",
         gap: 1,
-        fontFamily: "math, serif",
-        backgroundColor: "#ede8de",
+        fontFamily: "inherit",
+        backgroundColor: "#fff",
         flexWrap: "wrap",
       }}
     >

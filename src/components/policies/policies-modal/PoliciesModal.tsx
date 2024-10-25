@@ -21,7 +21,7 @@ export const PoliciesModal = ({
         variant={"soft"}
         sx={{
           cursor: "pointer",
-          fontFamily: "math, serif",
+          fontFamily: "inherit",
           letterSpacing: 2,
           backgroundColor: "transparent",
           transition: "all 0.3s ease",
@@ -57,11 +57,13 @@ export const PoliciesModal = ({
             id="modal-title"
             level="h4"
             textColor="inherit"
-            sx={{ fontWeight: "lg", mb: 1 }}
+            sx={{ fontWeight: "lg", mb: 1, fontFamily: "Arima" }}
           >
             {title}
           </Typography>
-          <Stack gap={2}>{content}</Stack>
+          <Stack gap={2} sx={{ fontFamily: "Arima" }}>
+            {content}
+          </Stack>
         </Sheet>
       </Modal>
     </>

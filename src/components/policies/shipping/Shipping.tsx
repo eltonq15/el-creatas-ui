@@ -118,7 +118,7 @@ export const Shipping = () => {
             </Link>{" "}
             ou pelo telefone{" "}
             <Link href="tel:+351963761170">
-              <b>+351963761170</b>
+              <b>+351 963 761 170</b>
             </Link>
             .
           </Box>

@@ -17,7 +17,7 @@ export const About = () => {
         paddingTop: 14,
         backgroundColor: "#ede8de",
         flexGrow: 1,
-        fontFamily: "arima madurai",
+        fontFamily: "arima",
         gap: 4,
       }}
     >
@@ -35,7 +35,7 @@ export const About = () => {
         </Typography>
 
         <Typography
-          level="body-md"
+          level="body-lg"
           sx={{ fontFamily: "inherit", textAlign: "center" }}
         >
           Uma marca apaixonada por decoração de interiores, com um amor especial
@@ -44,7 +44,7 @@ export const About = () => {
           história e ser um reflexo da identidade de quem o habita.
         </Typography>
         <Typography
-          level="body-md"
+          level="body-lg"
           sx={{ fontFamily: "inherit", textAlign: "center" }}
         >
           A decoração minimalista sempre nos encantou. Valorizamos a ideia de
@@ -88,14 +88,14 @@ export const About = () => {
         </Typography>
 
         <Typography
-          level="body-md"
+          level="body-lg"
           sx={{ fontFamily: "inherit", textAlign: "center" }}
         >
           Cada peça criada reflete nossa admiração pela produção artesanal,
           aliada a uma visão minimalista.
         </Typography>
         <Typography
-          level="body-md"
+          level="body-lg"
           sx={{ fontFamily: "inherit", textAlign: "center" }}
         >
           Nossas criações, feitas à mão localmente em Portugal, são produzidas
@@ -103,7 +103,7 @@ export const About = () => {
           processo lento e cuidadoso, garantindo que cada peça seja única.
         </Typography>
         <Typography
-          level="body-md"
+          level="body-lg"
           sx={{ fontFamily: "inherit", textAlign: "center" }}
         >
           Em um mundo onde a produção em massa é comum, buscamos oferecer uma
@@ -145,48 +145,29 @@ export const About = () => {
         </Typography>
 
         <Typography
-          level="body-md"
+          level="body-lg"
           sx={{ fontFamily: "inherit", textAlign: "center" }}
         >
           Escolhemos o jesmonite por várias razões, entre as quais se destacam:
         </Typography>
-        <List
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
-            padding: "1rem 0",
-            flexWrap: "wrap",
-          }}
-        >
+        <List marker="disc">
           <ListItem>
-            <Typography
-              level="body-md"
-              sx={{ fontFamily: "inherit", textAlign: "center" }}
-            >
-              Sustentabilidade: Um material ecológico, com baixo impacto
+            <Typography level="body-lg" sx={{ fontFamily: "inherit" }}>
+              <b>Sustentabilidade:</b> Um material ecológico, com baixo impacto
               ambiental, ideal para quem busca uma decoração consciente.
             </Typography>
           </ListItem>
           <ListItem>
-            <Typography
-              level="body-md"
-              sx={{ fontFamily: "inherit", textAlign: "center" }}
-            >
-              Versatilidade: Permite-nos criar peças com diversas texturas,
-              acabamentos e cores, garantindo que cada item seja verdadeiramente
-              único.
+            <Typography level="body-lg" sx={{ fontFamily: "inherit" }}>
+              <b>Versatilidade:</b> Permite-nos criar peças com diversas
+              texturas, acabamentos e cores, garantindo que cada item seja
+              verdadeiramente único.
             </Typography>
           </ListItem>
           <ListItem>
-            <Typography
-              level="body-md"
-              sx={{ fontFamily: "inherit", textAlign: "center" }}
-            >
-              Durabilidade: As peças em jesmonite são resistentes e projetadas
-              para durar, tornando-se investimentos para a decoração.
+            <Typography level="body-lg" sx={{ fontFamily: "inherit" }}>
+              <b>Durabilidade:</b> As peças em jesmonite são resistentes e
+              projetadas para durar, tornando-se investimentos para a decoração.
             </Typography>
           </ListItem>
         </List>
@@ -206,18 +187,24 @@ export const About = () => {
             autoPlay
             loop
             muted
-            width={256}
-            height={256}
             playsInline
+            style={{
+              objectFit: "cover",
+              width: 256,
+              height: 256,
+            }}
           />
           <video
             src={PorQueJesmonite2}
             autoPlay
             loop
             muted
-            width={256}
-            height={256}
             playsInline
+            style={{
+              objectFit: "cover",
+              width: 256,
+              height: 256,
+            }}
           />
         </Stack>
       </Stack>
