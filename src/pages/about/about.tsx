@@ -28,6 +28,7 @@ export const About = () => {
       }}
     >
       <AboutSection
+        id="quem-somos"
         title="Quem somos"
         text1="Uma marca apaixonada por decoração de interiores, com um amor especial
           pela criação de ambientes que refletem personalidade e proporcionam
@@ -52,6 +53,7 @@ export const About = () => {
       />
 
       <AboutSection
+        id="nossos-produtos"
         title="nossos produtos"
         text1="Cada peça criada reflete nossa admiração pela produção artesanal,
           aliada a uma visão minimalista."
@@ -75,6 +77,7 @@ export const About = () => {
       />
 
       <AboutSection
+        id="por-que-escolhemos-jesmonite"
         title="por que escolhemos jesmonite?"
         text1="Escolhemos o jesmonite por várias razões, entre as quais se destacam: "
         additionalContent={
@@ -124,6 +127,7 @@ export const About = () => {
       />
 
       <AboutSection
+        id="nossa-intencao"
         title="nossa intenção"
         text1="Na el creatas, acreditamos que uma vida equilibrada está profundamente conectada ao ambiente em que vivemos. Para avançar, muitas vezes é necessário dar um passo para trás e refletir."
         text2="Abraçamos essa filosofia ao nos concentrarmos na criação de espaços calmos e pacíficos dentro de nossos lares, promovendo um ambiente propício à restauração e recarga."
@@ -143,6 +147,7 @@ export const About = () => {
       />
 
       <AboutSection
+        id="nosso-compromisso"
         title="Nosso Compromisso"
         text1="Na el creatas, o compromisso consciente é fundamental em tudo  que fazemos. Acreditamos que cada ação tem um impacto."
         text2="Trabalhamos com jesmonite, um material ecológico, e garantimos que cada etapa do nosso processo minimize o desperdício e promova a reutilização, adotando práticas que respeitem o meio ambiente e que reduzam nossa pegada ecológica."

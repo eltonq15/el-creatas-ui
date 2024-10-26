@@ -2,6 +2,7 @@ import { Stack, Typography } from "@mui/joy";
 import { useIsMobile } from "../../hooks/use-is-mobile";
 
 interface AboutSectionProps {
+  id: string;
   title: string;
   text1?: string;
   text2?: string;
@@ -11,6 +12,7 @@ interface AboutSectionProps {
   mediaType?: "image" | "video";
 }
 export const AboutSection = ({
+  id,
   title,
   text1,
   text2,
@@ -21,7 +23,7 @@ export const AboutSection = ({
 }: AboutSectionProps) => {
   const isMobile = useIsMobile();
   return (
-    <Stack sx={{ width: "80%", gap: "1rem", maxWidth: 600 }}>
+    <Stack id={id} sx={{ width: "80%", gap: "1rem", maxWidth: 600 }}>
       <Typography
         level="h1"
         sx={{
