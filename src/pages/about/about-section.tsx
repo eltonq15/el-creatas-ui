@@ -103,7 +103,7 @@ export const AboutSection = ({
                 zIndex: 1,
                 boxShadow: "1px 0px 34px -12px #000000",
                 borderRadius: 8,
-                rotate: "3deg",
+                rotate: "5deg",
               }}
             />
           </>
@@ -130,7 +130,7 @@ export const AboutSection = ({
                 zIndex: 1,
                 boxShadow: "1px 0px 34px -12px #000000",
                 borderRadius: 8,
-                rotate: "3deg",
+                rotate: "5deg",
               }}
               src={media?.[1].src}
               width={256}
