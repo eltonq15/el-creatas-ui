@@ -55,24 +55,6 @@ export const NavHeader = () => {
           position: "relative",
         }}
       >
-        <SignedOut>
-          {!isMobile && (
-            <OutlinedButton sx={{ position: "absolute", right: 180 }}>
-              <Link to="/sign-up">Registar</Link>
-            </OutlinedButton>
-          )}
-          <SolidButton
-            sx={{
-              position: "absolute",
-              right: 40,
-              minWidth: isMobile ? 100 : 128,
-              minHeight: isMobile ? 32 : 36,
-              fontSize: isMobile ? 10 : 14,
-            }}
-          >
-            <Link to="/sign-in">Iniciar Sessão</Link>
-          </SolidButton>
-        </SignedOut>
         <SignedIn>
           <Box
             sx={{

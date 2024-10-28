@@ -1,5 +1,4 @@
 import { Stack, Typography } from "@mui/joy";
-import { useIsMobile } from "../../hooks/use-is-mobile";
 
 interface AboutSectionProps {
   id: string;
@@ -8,7 +7,7 @@ interface AboutSectionProps {
   text2?: string;
   text3?: string;
   additionalContent?: React.ReactNode;
-  media?: { src: string; alt: string }[];
+  media?: { src: string; alt: string; width?: number | string }[];
   mediaType?: "image" | "video";
 }
 export const AboutSection = ({
@@ -21,7 +20,6 @@ export const AboutSection = ({
   media,
   mediaType = "image",
 }: AboutSectionProps) => {
-  const isMobile = useIsMobile();
   return (
     <Stack id={id} sx={{ width: "80%", gap: "1rem", maxWidth: 600 }}>
       <Typography
@@ -64,8 +62,6 @@ export const AboutSection = ({
           flexDirection: "row",
           flexWrap: "wrap",
           justifyContent: "center",
-          minHeight: "480px",
-          padding: "1rem 0",
           position: "relative",
           rowGap: "24px",
         }}
@@ -82,11 +78,6 @@ export const AboutSection = ({
                 objectFit: "cover",
                 width: 256,
                 height: 256,
-                position: "absolute",
-                top: 0,
-                left: isMobile ? 0 : "15%",
-                zIndex: 0,
-                borderRadius: 8,
               }}
             />
             <video
@@ -99,41 +90,18 @@ export const AboutSection = ({
                 objectFit: "cover",
                 width: 256,
                 height: 256,
-                position: "absolute",
-                bottom: 10,
-                right: isMobile ? 0 : "15%",
-                zIndex: 1,
-                boxShadow: "1px 0px 34px -12px #000000",
-                borderRadius: 8,
-                rotate: "5deg",
               }}
             />
           </>
         ) : (
           <>
             <img
-              style={{
-                position: "absolute",
-                top: 0,
-                left: isMobile ? 0 : "15%",
-                zIndex: 0,
-                borderRadius: 8,
-              }}
               src={media?.[0].src}
               width={256}
               loading="lazy"
               alt={media?.[0].alt}
             />
             <img
-              style={{
-                position: "absolute",
-                bottom: 10,
-                right: isMobile ? 0 : "15%",
-                zIndex: 1,
-                boxShadow: "1px 0px 34px -12px #000000",
-                borderRadius: 8,
-                rotate: "5deg",
-              }}
               src={media?.[1].src}
               width={256}
               loading="lazy"

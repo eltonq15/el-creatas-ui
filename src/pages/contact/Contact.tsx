@@ -90,7 +90,7 @@ export const Contact = () => {
         level="h2"
         sx={{
           textAlign: "justify",
-          fontSize: "24px",
+          fontSize: "18px",
           lineHeight: "36px",
           fontFamily: "inherit",
           fontWeight: "400",
@@ -109,7 +109,7 @@ export const Contact = () => {
         level="h2"
         sx={{
           textAlign: "justify",
-          fontSize: "24px",
+          fontSize: "18px",
           lineHeight: "36px",
           fontFamily: "inherit",
           fontWeight: "400",
@@ -136,7 +136,7 @@ export const Contact = () => {
             level="h2"
             sx={{
               textAlign: "center",
-              fontSize: "24px",
+              fontSize: "18px",
               lineHeight: "36px",
               fontFamily: "inherit",
               fontWeight: "600",

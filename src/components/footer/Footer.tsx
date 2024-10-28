@@ -20,10 +20,6 @@ export const Footer = () => {
         borderTop: "1px solid #bbb",
       }}
     >
-      {/*  add instagram logo */}
-      <Typography level="body-sm" letterSpacing={2}>
-        Siga-nos nas redes sociais:
-      </Typography>
       <Stack
         direction={"row"}
         sx={{
