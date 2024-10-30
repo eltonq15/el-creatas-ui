@@ -9,7 +9,11 @@ export const SolidButton = ({ children, ...props }: ButtonProps) => {
         backgroundColor: "black",
         borderColor: "white",
         transition: "all 0.3s ease",
-        "&:hover": { backgroundColor: "#9f978d" },
+        "&:hover": {
+          backgroundColor: "transparent",
+          color: "black",
+          border: "1px solid black",
+        },
         ...(props.sx || {}),
       }}
     >

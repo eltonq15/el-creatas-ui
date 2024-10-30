@@ -1,4 +1,5 @@
 import { Stack, Typography } from "@mui/joy";
+import { ModuleSection } from "../../components/module/ModuleSection";
 
 interface AboutSectionProps {
   id: string;
@@ -21,35 +22,22 @@ export const AboutSection = ({
   mediaType = "image",
 }: AboutSectionProps) => {
   return (
-    <Stack id={id} sx={{ width: "80%", gap: "1rem", maxWidth: 600 }}>
-      <Typography
-        level="h1"
-        sx={{
-          fontSize: 24,
-          fontFamily: "inherit",
-          fontWeight: 400,
-          textAlign: "center",
-          textTransform: "uppercase",
-        }}
-      >
-        {title}
-      </Typography>
-
+    <ModuleSection title={title}>
       <Typography
         level="body-lg"
-        sx={{ fontFamily: "inherit", textAlign: "center" }}
+        sx={{ fontFamily: "inherit", textAlign: "center", lineHeight: "32px" }}
       >
         {text1}
       </Typography>
       <Typography
         level="body-lg"
-        sx={{ fontFamily: "inherit", textAlign: "center" }}
+        sx={{ fontFamily: "inherit", textAlign: "center", lineHeight: "32px" }}
       >
         {text2}
       </Typography>
       <Typography
         level="body-lg"
-        sx={{ fontFamily: "inherit", textAlign: "center" }}
+        sx={{ fontFamily: "inherit", textAlign: "center", lineHeight: "32px" }}
       >
         {text3}
       </Typography>
@@ -110,6 +98,6 @@ export const AboutSection = ({
           </>
         )}
       </Stack>
-    </Stack>
+    </ModuleSection>
   );
 };

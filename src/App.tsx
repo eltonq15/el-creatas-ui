@@ -13,9 +13,11 @@ import { useCartStore } from "./stores/cart-store/cart-store";
 import { SignInPage } from "./pages/sign-in/SignIn";
 import { SignUpPage } from "./pages/sign-up/SignUp";
 import { About } from "./pages/about/about";
+import { Faq } from "./pages/faq/Faq";
 
 const App: React.FC = () => {
   const { isSnackbarOpen, setIsSnackbarOpen } = useCartStore();
+
   return (
     <Router>
       <NavHeader />
@@ -29,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/sobre" element={<About />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="/checkout/*" element={<Checkout />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
       <Footer />
       <AddToCartSnackbar open={isSnackbarOpen} setOpen={setIsSnackbarOpen} />

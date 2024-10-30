@@ -9,7 +9,7 @@ export const OutlinedButton = ({ children, ...props }: ButtonProps) => {
         color: "black",
         borderColor: "black",
         transition: "all 0.3s ease",
-        "&:hover": { backgroundColor: "#9f978d" },
+        "&:hover": { backgroundColor: "black", color: "white" },
         ...(props.sx || {}),
       }}
     >

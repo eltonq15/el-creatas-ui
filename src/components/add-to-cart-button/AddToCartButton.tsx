@@ -31,7 +31,7 @@ export const AddToCartButton = ({ product }: { product: Product }) => {
   return (
     <>
       <OutlinedButton onClick={() => handleAddToCart(product)}>
-        Adicionar ao carrinho
+        +
       </OutlinedButton>
     </>
   );

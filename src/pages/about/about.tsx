@@ -1,4 +1,4 @@
-import { Divider, List, ListItem, Stack, Typography } from "@mui/joy";
+import { Divider, List, ListItem, Typography } from "@mui/joy";
 import QuemSomos1 from "../../assets/quem-somos/quem-somos-1.png";
 import QuemSomos2 from "../../assets/quem-somos/quem-somos-2.png";
 import NossosProdutos1 from "../../assets/nossos-produtos/nossos-produtos-1.png";
@@ -9,24 +9,13 @@ import NossaIntencao1 from "../../assets/nossa-intencao/nossa-intencao-1.png";
 import NossaIntencao2 from "../../assets/nossa-intencao/nossa-intencao-2.png";
 import NossoCompromisso1 from "../../assets/nosso-compromisso/nosso-compromisso-1.png";
 import NossoCompromisso2 from "../../assets/nosso-compromisso/nosso-compromisso-2.png";
+import { ModuleWrapper } from "../../components/module/ModuleWrapper";
 
 import { AboutSection } from "./about-section";
 
 export const About = () => {
   return (
-    <Stack
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-
-        paddingTop: 14,
-        backgroundColor: "#ede8de",
-        flexGrow: 1,
-        fontFamily: "arima",
-        gap: 4,
-      }}
-    >
+    <ModuleWrapper>
       <AboutSection
         id="quem-somos"
         title="Quem somos"
@@ -134,7 +123,7 @@ export const About = () => {
         text3="Nossa aspiração é que cada peça ilumine o seu espaço, se torne parte da sua história e contribua para a coleção de coisas que você ama."
         media={[
           { src: NossaIntencao1, alt: "Nossa Intencao 1" },
-          { src: NossaIntencao2, alt: "Nossa Intencao 2" },
+          { src: NossaIntencao2, alt: "Nossa Intencao 2", width: 300 },
         ]}
       />
 
@@ -171,6 +160,6 @@ export const About = () => {
           alignSelf: "center",
         }}
       />
-    </Stack>
+    </ModuleWrapper>
   );
 };
