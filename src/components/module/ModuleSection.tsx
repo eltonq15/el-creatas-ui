@@ -1,12 +1,16 @@
-import { Stack } from "@mui/joy";
+import { Stack, TypographySystem } from "@mui/joy";
 import { ModuleTitle } from "./ModuleTitle";
 
 export const ModuleSection = ({
   children,
   title,
+  level,
+  size,
 }: {
   children: React.ReactNode;
   title: string;
+  level?: keyof TypographySystem;
+  size?: number;
 }) => {
   return (
     <Stack
@@ -17,7 +21,7 @@ export const ModuleSection = ({
         alignItems: "center",
       }}
     >
-      <ModuleTitle title={title} />
+      <ModuleTitle title={title} level={level} size={size} />
       {children}
     </Stack>
   );

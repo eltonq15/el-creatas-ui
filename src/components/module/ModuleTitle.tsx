@@ -1,11 +1,19 @@
-import { Typography } from "@mui/joy";
+import { Typography, TypographySystem } from "@mui/joy";
 
-export const ModuleTitle = ({ title }: { title: string }) => {
+export const ModuleTitle = ({
+  title,
+  level,
+  size,
+}: {
+  title: string;
+  level?: keyof TypographySystem;
+  size?: number;
+}) => {
   return (
     <Typography
-      level="h1"
+      level={level || "h1"}
       sx={{
-        fontSize: 24,
+        fontSize: size || 24,
         fontFamily: "inherit",
         fontWeight: 400,
         textAlign: "center",
