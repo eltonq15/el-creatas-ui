@@ -5,12 +5,15 @@ import Essence from "../../assets/formatted/essence.png";
 import Harmonia from "../../assets/formatted/harmonia.png";
 import Refine from "../../assets/formatted/refine.png";
 
+import { useEffect } from "react";
 import { useGetProducts } from "../../hooks/use-get-products";
 import { Stack, Typography } from "@mui/joy";
-
-import "./styles.scss";
 import { ModuleWrapper } from "../../components/module/ModuleWrapper";
 import { ModuleSection } from "../../components/module/ModuleSection";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import "./styles.scss";
 
 const imagesMap = {
   Aura,
@@ -23,6 +26,15 @@ const imagesMap = {
 
 export const Products = () => {
   const { data: products } = useGetProducts();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   return (
     <ModuleWrapper>
       <ModuleSection title="Produtos">
@@ -51,25 +63,33 @@ export const Products = () => {
             marginBottom: 2,
           }}
         >
-          {products?.map((product) => (
+          {products?.map((product, index) => (
             <Stack
               key={product.id}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              onClick={() => {
+                window.location.href = `/produtos/${product.id}`;
+              }}
               sx={{
                 backgroundColor: "#ede8de",
                 borderRadius: 8,
                 position: "relative",
                 boxShadow: "0 0 24px -22px black",
                 cursor: "pointer",
+                boxSizing: "border-box",
+                minHeight: "256px",
+                border: "1px solid transparent",
                 ":hover": {
-                  transform: "scale(1.05)",
-                  transition: "all .5s ease",
-                  border: "1px solid black",
-                  animation: "all .5s ease",
+                  borderColor: "black",
                 },
               }}
             >
               <img
-                style={{ margin: "0 auto", borderRadius: "20px" }}
+                style={{
+                  margin: "0 auto",
+                  borderRadius: "20px",
+                }}
                 src={imagesMap[product.name as keyof typeof imagesMap]}
                 alt={product.name}
                 width={256}

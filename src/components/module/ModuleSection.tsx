@@ -6,17 +6,19 @@ export const ModuleSection = ({
   title,
   level,
   size,
+  width,
 }: {
   children: React.ReactNode;
   title: string;
   level?: keyof TypographySystem;
   size?: number;
+  width?: number | string;
 }) => {
   return (
     <Stack
       sx={{
         gap: "1rem",
-        maxWidth: 600,
+        maxWidth: width || 600,
         width: "90%",
         alignItems: "center",
       }}

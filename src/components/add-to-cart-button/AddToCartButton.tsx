@@ -3,7 +3,13 @@ import { Product } from "../../hooks/use-get-products";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import { OutlinedButton } from "../button/OutlinedButton";
 
-export const AddToCartButton = ({ product }: { product: Product }) => {
+export const AddToCartButton = ({
+  product,
+  text,
+}: {
+  product: Product;
+  text?: string;
+}) => {
   const { cartProducts, setCartProducts, setIsSnackbarOpen } = useCartStore();
 
   const handleAddToCart = (product: Product) => {
@@ -31,7 +37,7 @@ export const AddToCartButton = ({ product }: { product: Product }) => {
   return (
     <>
       <OutlinedButton onClick={() => handleAddToCart(product)}>
-        +
+        {text || "+"}
       </OutlinedButton>
     </>
   );

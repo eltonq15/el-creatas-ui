@@ -14,3 +14,9 @@ export const getAllProducts: () => Promise<ProductItem[]> = () => {
       return res.sort((a: ProductItem, b: ProductItem) => a.price - b.price);
     });
 };
+
+export const getProductById = (id: string): Promise<ProductItem> => {
+  return fetch(`${process.env.REACT_APP_API_URL}/products/${id}`).then((res) =>
+    res.json()
+  );
+};

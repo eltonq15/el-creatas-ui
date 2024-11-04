@@ -1,22 +1,12 @@
-.products-page-container {
-  .products-page-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    gap: 24px;
-    padding-top: 130px;
-    padding-bottom: 48px;
-    background-image: url("../../assets/background.jpg");
-  }
+.product {
+  animation: fadeIn 2s;
+}
 
-  .product-card {
-    &:hover {
-      cursor: pointer;
-      border-color: #ece7dd;
-      box-shadow: 0 0 1em 0.5em #ece7dd;
-      transition: 0.5s;
-      transform: scale(1.02);
-    }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

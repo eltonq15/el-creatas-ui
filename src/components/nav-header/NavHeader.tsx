@@ -2,12 +2,9 @@ import { useEffect, useRef } from "react";
 import { Logo } from "../logo/Logo";
 import { Cart } from "../cart/Cart";
 import { MobileMenu } from "../mobile-menu/MobileMenu";
-import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { SignedIn, UserButton } from "@clerk/clerk-react";
 
-import { SolidButton } from "../button/SolidButton";
-import { Link } from "react-router-dom";
 import { Box } from "@mui/joy";
-import { OutlinedButton } from "../button/OutlinedButton";
 import { useIsMobile } from "../../hooks/use-is-mobile";
 
 import "./styles.scss";
