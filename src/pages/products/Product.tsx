@@ -47,6 +47,8 @@ export const Product = () => {
       <ModuleSection title={product.name} width={800}>
         <img
           src={imagesMap[product.name as keyof typeof imagesMap]}
+          data-aos="fade-up"
+          data-aos-delay={200}
           width={400}
           alt={product.name}
         />
