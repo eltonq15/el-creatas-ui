@@ -105,7 +105,13 @@ export const CartDrawer = () => {
         <SheetClose asChild>
           <Link to={cartProducts.length > 0 ? "/checkout" : ""}>
             <SolidButton
-              className="mt-4"
+              sx={{
+                margin: 1,
+                flexDirection: "row-reverse",
+                position: "absolute",
+                right: "16px",
+                marginTop: "16px",
+              }}
               type="submit"
               disabled={cartProducts.length === 0}
             >
