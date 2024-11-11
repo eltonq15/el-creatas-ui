@@ -1,5 +1,8 @@
 import { Stack, Typography } from "@mui/joy";
 import { ModuleSection } from "../../components/module/ModuleSection";
+import { LazyImage } from "../../components/lazy-image/LazyImage";
+import { useLazyImages } from "../../hooks/use-lazy-images";
+import { LazyVideo } from "../../components/lazy-video/LazyVideo";
 
 interface AboutSectionProps {
   id: string;
@@ -21,6 +24,8 @@ export const AboutSection = ({
   media,
   mediaType = "image",
 }: AboutSectionProps) => {
+  useLazyImages();
+
   return (
     <ModuleSection title={title}>
       <Typography
@@ -56,7 +61,7 @@ export const AboutSection = ({
       >
         {mediaType === "video" ? (
           <>
-            <video
+            <LazyVideo
               src={media?.[0].src}
               autoPlay
               loop
@@ -68,7 +73,7 @@ export const AboutSection = ({
                 height: 256,
               }}
             />
-            <video
+            <LazyVideo
               src={media?.[1].src}
               autoPlay
               loop
@@ -83,13 +88,13 @@ export const AboutSection = ({
           </>
         ) : (
           <>
-            <img
+            <LazyImage
               src={media?.[0].src}
               width={256}
               loading="lazy"
               alt={media?.[0].alt}
             />
-            <img
+            <LazyImage
               src={media?.[1].src}
               width={256}
               loading="lazy"

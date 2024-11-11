@@ -5,6 +5,7 @@
   min-height: 100vh;
   position: relative;
   width: 100%;
+  scroll-behavior: smooth;
 
   .image-container {
     width: 100%;
@@ -49,6 +50,7 @@
           flex-direction: column;
           justify-content: start;
           cursor: pointer;
+          animation: fade-in 1.5s ease-in-out;
 
           .card-details {
             margin-top: -32px;
@@ -56,9 +58,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            font-size: 20px;
 
             .price {
-              font-size: 24px;
+              font-size: 16px;
               font-weight: 400;
               padding-bottom: 8px;
               color: gray;
@@ -76,5 +79,17 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

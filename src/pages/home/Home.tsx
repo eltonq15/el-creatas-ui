@@ -41,7 +41,12 @@ export const Home = () => {
             {[1, 2].flatMap(() =>
               products?.map((product) => (
                 <div className="best-sellers-card">
-                  <div className="best-sellers-card-image">
+                  <div
+                    className="best-sellers-card-image"
+                    onClick={() => {
+                      window.location.href = `/produtos/${product.id}`;
+                    }}
+                  >
                     <img
                       src={
                         imageComponentsMap[

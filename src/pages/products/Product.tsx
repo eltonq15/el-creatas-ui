@@ -1,11 +1,9 @@
-import { useEffect } from "react";
 import { Typography } from "@mui/joy";
 import { ModuleWrapper } from "../../components/module/ModuleWrapper";
 import { ModuleSection } from "../../components/module/ModuleSection";
 import { useParams } from "react-router-dom";
 import { useGetProductById } from "../../hooks/use-get-product-by-id";
 import { AddToCartButton } from "../../components/add-to-cart-button/AddToCartButton";
-import AOS from "aos";
 
 import Aura from "../../assets/formatted/aura.png";
 import Blossom from "../../assets/formatted/blossom.png";
@@ -30,14 +28,6 @@ export const Product = () => {
   const { productId } = useParams();
   const { data: product } = useGetProductById(productId || "");
 
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-      once: true,
-      offset: 100,
-    });
-  }, []);
-
   if (!product) {
     return null;
   }
@@ -46,9 +36,8 @@ export const Product = () => {
     <ModuleWrapper>
       <ModuleSection title={product.name} width={800}>
         <img
+          className="product-image"
           src={imagesMap[product.name as keyof typeof imagesMap]}
-          data-aos="fade-up"
-          data-aos-delay={200}
           width={400}
           alt={product.name}
         />
