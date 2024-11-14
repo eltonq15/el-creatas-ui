@@ -4,6 +4,10 @@ export const images = [
     thumbnail: "/formatted/aura.png",
   },
   {
+    original: "/formatted/bloom.png",
+    thumbnail: "/formatted/bloom.png",
+  },
+  {
     original: "/formatted/blossom.png",
     thumbnail: "/formatted/blossom.png",
   },
@@ -14,6 +18,10 @@ export const images = [
   {
     original: "/formatted/essence.png",
     thumbnail: "/formatted/essence.png",
+  },
+  {
+    original: "/formatted/goblet.png",
+    thumbnail: "/formatted/goblet.png",
   },
   {
     original: "/formatted/harmonia.png",

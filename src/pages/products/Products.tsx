@@ -1,7 +1,9 @@
 import Aura from "../../assets/formatted/aura.png";
+import Bloom from "../../assets/formatted/bloom.png";
 import Blossom from "../../assets/formatted/blossom.png";
 import Elegance from "../../assets/formatted/elegance.png";
 import Essence from "../../assets/formatted/essence.png";
+import Goblet from "../../assets/formatted/goblet.png";
 import Harmonia from "../../assets/formatted/harmonia.png";
 import Refine from "../../assets/formatted/refine.png";
 
@@ -17,9 +19,11 @@ import "./styles.scss";
 
 const imagesMap = {
   Aura,
+  Bloom,
   Blossom,
   Elegance,
   Essence,
+  Goblet,
   Harmonia,
   Refine,
 };

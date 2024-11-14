@@ -49,7 +49,6 @@ export const Contact = () => {
       );
 
       if (response.ok) {
-        alert("Email enviado com sucesso!");
         setMessageSent(true);
       } else {
         const errorData = await response.json();

@@ -1,9 +1,11 @@
 import Background2 from "../../assets/background-2.jpg";
 import BackgroundVideo from "../../assets/background-video.mp4";
 import Aura from "../../assets/formatted/aura.png";
+import Bloom from "../../assets/formatted/bloom.png";
 import Blossom from "../../assets/formatted/blossom.png";
 import Elegance from "../../assets/formatted/elegance.png";
 import Essence from "../../assets/formatted/essence.png";
+import Goblet from "../../assets/formatted/goblet.png";
 import Harmonia from "../../assets/formatted/harmonia.png";
 import Refine from "../../assets/formatted/refine.png";
 import { AddToCartButton } from "../../components/add-to-cart-button/AddToCartButton";
@@ -18,9 +20,11 @@ export const Home = () => {
 
   const imageComponentsMap = {
     Aura,
+    Bloom,
     Blossom,
     Elegance,
     Essence,
+    Goblet,
     Harmonia,
     Refine,
   };
