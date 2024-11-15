@@ -3,7 +3,7 @@ import { createOrderItems } from "../api/order-itens-api";
 import { createOrder } from "../api/orders-api";
 import { createPayment } from "../api/payments-api";
 import { createUser, getUserByEmail } from "../api/users-api";
-import { FRETE, PaymentMethods, PaymentStatus } from "../constants";
+import { SHIPPING_PRICE, PaymentMethods, PaymentStatus } from "../constants";
 import { CartProduct, CheckoutData } from "../types";
 
 export const checkout = async (
@@ -37,7 +37,7 @@ export const checkout = async (
       products.reduce(
         (acc, product) => acc + product.price * product.quantity,
         0
-      ) + FRETE,
+      ) + SHIPPING_PRICE,
     phone: data.phone,
     email: data.email,
   });

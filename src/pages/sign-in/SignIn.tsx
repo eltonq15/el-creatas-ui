@@ -13,7 +13,6 @@ export const SignInPage = () => {
         alignItems: "center",
         flexGrow: 1,
         backgroundColor: "#ede8de",
-        paddingTop: "72px !important",
         minHeight: "80vh",
       }}
     >

@@ -10,7 +10,6 @@ export const SignUpPage = () => {
         alignItems: "center",
         flexGrow: 1,
         backgroundColor: "#ede8de",
-        paddingTop: "48px !important",
         minHeight: "120vh",
       }}
     >

@@ -15,7 +15,7 @@ import { SolidButton } from "../button/SolidButton";
 import { useCartStore } from "../../stores/cart-store/cart-store";
 import { formatToEuros } from "../../utils/formatter";
 import { checkout } from "../../services/checkout";
-import { FRETE, PaymentMethods } from "../../constants";
+import { SHIPPING_PRICE, PaymentMethods } from "../../constants";
 import { CheckoutStepper } from "./CheckoutStepper";
 
 import "./styles.scss";
@@ -98,11 +98,11 @@ export const CheckoutPaymentForm = () => {
                 amount: (product.price * product.quantity * 100).toFixed(0),
               })),
               {
-                id: "frete",
-                name: "Frete",
-                price: FRETE,
+                id: "shipping",
+                name: "Shipping",
+                price: SHIPPING_PRICE,
                 quantity: 1,
-                amount: (FRETE * 100).toFixed(0),
+                amount: (SHIPPING_PRICE * 100).toFixed(0),
               },
             ],
             customer: checkoutData,
@@ -154,8 +154,8 @@ export const CheckoutPaymentForm = () => {
       <Box sx={{ width: "100%", padding: "16px" }}>
         <form id="payment-form" onSubmit={handleSubmit}>
           <PriceLine text="Produtos" price={totalPrice} />
-          <PriceLine text="Envio" price={4.8} />
-          <PriceLine text="Total" price={totalPrice + 4.8} />
+          <PriceLine text="Envio" price={SHIPPING_PRICE} />
+          <PriceLine text="Total" price={totalPrice + SHIPPING_PRICE} />
 
           <Stack spacing={2} sx={{ maxWidth: 400, flex: 1 }}>
             <ToggleButtonGroup

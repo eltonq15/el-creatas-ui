@@ -13,6 +13,9 @@ export const NavHeader = () => {
   const navHeaderRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
+  const isHomePage =
+    window.location.pathname === "/" || window.location.pathname === "/home";
+
   setInterval(() => {
     const paragraphs = document.querySelectorAll("p");
 
@@ -41,7 +44,14 @@ export const NavHeader = () => {
   }, []);
 
   return (
-    <nav className="nav-header" role="navigation" ref={navHeaderRef}>
+    <nav
+      className="nav-header"
+      role="navigation"
+      ref={navHeaderRef}
+      style={{
+        position: isHomePage ? "fixed" : "relative",
+      }}
+    >
       <MobileMenu />
       <Logo />
       <span

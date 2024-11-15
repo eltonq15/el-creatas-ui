@@ -15,6 +15,7 @@ import { SignInPage } from "./pages/sign-in/SignIn";
 import { SignUpPage } from "./pages/sign-up/SignUp";
 import { About } from "./pages/about/about";
 import { Faq } from "./pages/faq/Faq";
+import NotFound from "./pages/not-found/NotFound";
 
 const App: React.FC = () => {
   const { isSnackbarOpen, setIsSnackbarOpen } = useCartStore();
@@ -34,6 +35,7 @@ const App: React.FC = () => {
         <Route path="/contacto" element={<Contact />} />
         <Route path="/checkout/*" element={<Checkout />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <AddToCartSnackbar open={isSnackbarOpen} setOpen={setIsSnackbarOpen} />

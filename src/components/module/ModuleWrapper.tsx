@@ -7,7 +7,7 @@ export const ModuleWrapper = ({ children }: { children: React.ReactNode }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "108px 24px 24px",
+        padding: "48px 24px 24px",
         backgroundColor: "#ede8de",
         flexGrow: 1,
         fontFamily: "arima",
