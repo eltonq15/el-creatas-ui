@@ -4,11 +4,13 @@ import { ModuleWrapper } from "../../components/module/ModuleWrapper";
 import { ModuleSection } from "../../components/module/ModuleSection";
 import { Typography } from "@mui/joy";
 
+import "./styles.scss";
+
 const NotFound = () => {
   return (
     <ModuleWrapper>
       <ModuleSection title="Página não encontrada">
-        <Ghost size={256} />
+        <Ghost className="not-found-icon" size={256} />
         <Typography
           level="h2"
           sx={{
