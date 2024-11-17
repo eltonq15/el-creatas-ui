@@ -13,7 +13,7 @@ export const SignInPage = () => {
         alignItems: "center",
         flexGrow: 1,
         backgroundColor: "#ede8de",
-        minHeight: "80vh",
+        minHeight: "70vh",
       }}
     >
       <SignIn

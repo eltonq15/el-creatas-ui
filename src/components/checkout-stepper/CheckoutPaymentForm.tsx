@@ -151,7 +151,7 @@ export const CheckoutPaymentForm = () => {
   return (
     <Stack sx={{ width: 400, alignSelf: "center" }}>
       <CheckoutStepper activeStep={2} />
-      <Box sx={{ width: "100%", padding: "16px" }}>
+      <Box sx={{ width: "100%", padding: "16px !important" }}>
         <form id="payment-form" onSubmit={handleSubmit}>
           <PriceLine text="Produtos" price={totalPrice} />
           <PriceLine text="Envio" price={SHIPPING_PRICE} />

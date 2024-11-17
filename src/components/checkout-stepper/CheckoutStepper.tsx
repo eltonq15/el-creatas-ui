@@ -7,7 +7,6 @@ import ContactsRoundedIcon from "@mui/icons-material/ContactsRounded";
 import LocalShippingRoundedIcon from "@mui/icons-material/LocalShippingRounded";
 import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import { useTheme } from "@mui/joy";
 import { FormProvider, useForm } from "react-hook-form";
 
 const stepperContainerStyle = {
@@ -83,7 +82,6 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
     ];
   };
 
-  const theme = useTheme();
   const methods = useForm();
 
   return (
@@ -92,10 +90,7 @@ export const CheckoutStepper = ({ activeStep }: { activeStep: number }) => {
         size="md"
         sx={{
           ...stepperContainerStyle,
-          paddingTop: "120px",
-          [theme.breakpoints.down("sm")]: {
-            paddingTop: "30px",
-          },
+          // [theme.breakpoints.down("sm")]: {},
         }}
       >
         <Step

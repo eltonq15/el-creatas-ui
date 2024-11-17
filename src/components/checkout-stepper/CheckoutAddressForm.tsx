@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { SolidButton } from "../button/SolidButton";
 import { OutlinedButton } from "../button/OutlinedButton";
 import { addBusinessDays, format } from "date-fns";
+import { SHIPPING_PRICE } from "../../constants";
 
 import "./styles.scss";
 
@@ -149,7 +150,7 @@ export const CheckoutAddressForm = () => {
           />
           <Stack justifyContent="start" alignItems="start">
             <Typography level="body-sm" fontWeight={700}>
-              CTT Envios - 4,80€
+              CTT Envios - {SHIPPING_PRICE}€
             </Typography>
             <Typography level="body-sm">
               (Receba até o dia{" "}

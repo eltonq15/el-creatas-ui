@@ -10,7 +10,7 @@ export const SignUpPage = () => {
         alignItems: "center",
         flexGrow: 1,
         backgroundColor: "#ede8de",
-        minHeight: "120vh",
+        minHeight: "100vh",
       }}
     >
       <SignUp signInUrl="/sign-in" path="/sign-up" />

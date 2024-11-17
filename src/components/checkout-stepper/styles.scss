@@ -5,8 +5,8 @@
   padding: 16px;
   background-color: #ede8de;
   border-radius: 8px;
-  margin-bottom: 24px;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 
   .MuiFormHelperText-root {
     color: red;
@@ -20,8 +20,8 @@
   padding: 16px;
   background-color: #ede8de;
   border-radius: 8px;
-  margin-bottom: 24px;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 
   .buttons {
     position: absolute;

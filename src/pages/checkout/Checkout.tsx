@@ -24,9 +24,9 @@ export const Checkout = () => {
         {<Navigate to="/sign-in" state={{ from: "/checkout" }} replace />}
       </SignedOut>
 
-      <div>
+      {/* <div>
         <Outlet />
-      </div>
+      </div> */}
     </div>
   );
 };

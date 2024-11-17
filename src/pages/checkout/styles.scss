@@ -1,11 +1,14 @@
 #checkout-page-container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 
   align-items: center;
   gap: 24px;
-  padding: 24px;
-  padding-top: 100px;
+  padding: 32px;
   background-color: #ede8de;
+
+  > div {
+    width: 100%;
+    max-width: 400px;
+  }
 }
