@@ -11,6 +11,6 @@ export enum PaymentStatus {
   REFUNDED = "Estornado",
 }
 
-export const SHIPPING_PRICE = 0;
+export const SHIPPING_PRICE = 4.8;
 
 export const MAX_ALLOWED_ITEM_QUANTITY = 10;
