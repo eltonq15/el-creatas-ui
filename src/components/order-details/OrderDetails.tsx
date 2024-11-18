@@ -1,5 +1,5 @@
 import { Link, Stack, Typography } from "@mui/joy";
-import { formatToEuros } from "../../utils/formatter";
+import { formatToEuro } from "../../utils/formatter";
 import { PaymentMethods, PaymentStatus } from "../../constants";
 import { OrderData } from "../../hooks/use-create-order";
 
@@ -29,7 +29,7 @@ export const OrderDetails = ({ orderData }: { orderData: OrderData }) => {
       </Typography>
       <Typography alignSelf="start" level="body-md">
         <b>Total: </b>
-        {formatToEuros(orderData?.payment?.amount || 0)}
+        {formatToEuro(orderData?.payment?.amount || 0)}
       </Typography>
       <Typography alignSelf="start" level="body-md">
         <b>Forma de pagamento: </b>
@@ -87,7 +87,7 @@ export const OrderDetails = ({ orderData }: { orderData: OrderData }) => {
           </Typography>
           <Typography alignSelf="start" level="body-md">
             <b>Montante: </b>
-            {formatToEuros(orderData?.payment?.amount)}
+            {formatToEuro(orderData?.payment?.amount)}
           </Typography>
         </Stack>
       )}

@@ -1,14 +1,25 @@
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { CheckoutPersonalData } from "./CheckoutPersonalData";
 import { CheckoutAddress } from "./CheckoutAddress";
 import { SuccessfulOrder } from "./SuccessfulOrder";
 import { CheckoutPaymentForm } from "../../components/checkout-stepper/CheckoutPaymentForm";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { useCartStore } from "../../stores/cart-store/cart-store";
 
 import "./styles.scss";
 
 export const Checkout = () => {
+  const { cartProducts } = useCartStore();
+
+  const hasProducts = cartProducts.length > 0;
+  const isSuccessfulOrderPage =
+    window.location.pathname === "/checkout/sucesso";
+
+  if (!hasProducts && !isSuccessfulOrderPage) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <div id="checkout-page-container">
       <SignedIn>

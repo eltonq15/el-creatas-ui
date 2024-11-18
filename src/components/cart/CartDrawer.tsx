@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { formatToEuros } from "../../utils/formatter";
+import { formatToEuro } from "../../utils/formatter";
 import {
   SheetClose,
   SheetContent,
@@ -52,7 +52,7 @@ export const CartDrawer = () => {
             {cartProducts.map((product) => (
               <TableRow key={product.id}>
                 <TableCell className="font-medium">{product.name}</TableCell>
-                <TableCell>{formatToEuros(product.price)}</TableCell>
+                <TableCell>{formatToEuro(product.price)}</TableCell>
                 <TableCell>
                   <Select
                     value={String(product.quantity)}
@@ -82,7 +82,7 @@ export const CartDrawer = () => {
                   </Select>
                 </TableCell>
                 <TableCell className="text-right">
-                  {formatToEuros(product.quantity * product.price)}
+                  {formatToEuro(product.quantity * product.price)}
                 </TableCell>
               </TableRow>
             ))}
@@ -91,7 +91,7 @@ export const CartDrawer = () => {
             <TableRow>
               <TableCell colSpan={3}>Subtotal</TableCell>
               <TableCell className="text-right">
-                {formatToEuros(totalPrice)}
+                {formatToEuro(totalPrice)}
               </TableCell>
             </TableRow>
           </TableFooter>

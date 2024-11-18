@@ -13,7 +13,7 @@ import { useCheckoutStore } from "../../stores/checkout-store/checkout-store";
 import { OutlinedButton } from "../button/OutlinedButton";
 import { SolidButton } from "../button/SolidButton";
 import { useCartStore } from "../../stores/cart-store/cart-store";
-import { formatToEuros } from "../../utils/formatter";
+import { formatToEuro } from "../../utils/formatter";
 import { checkout } from "../../services/checkout";
 import { SHIPPING_PRICE, PaymentMethods } from "../../constants";
 import { CheckoutStepper } from "./CheckoutStepper";
@@ -34,7 +34,7 @@ const PriceLine = ({ text, price }: { text: string; price: number }) => (
       {text}
     </Typography>
     <Typography level="body-sm" width={"100%"} textAlign={"right"}>
-      {` ${formatToEuros(price)}`}
+      {` ${formatToEuro(price)}`}
     </Typography>
   </Stack>
 );
