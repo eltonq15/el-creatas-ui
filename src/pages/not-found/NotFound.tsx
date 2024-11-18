@@ -10,7 +10,7 @@ const NotFound = () => {
   return (
     <ModuleWrapper>
       <ModuleSection title="Página não encontrada">
-        <Ghost className="not-found-icon" size={256} />
+        <Ghost className="not-found-icon" size={256} weight="duotone" />
         <Typography
           level="h2"
           sx={{
