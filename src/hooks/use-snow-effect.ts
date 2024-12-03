@@ -10,8 +10,8 @@ export const useSnowEffect = () => {
       snow.style.left = Math.random() * 100 + "%";
 
       // Duração da animação aleatória entre 5 e 10 segundos
-      const duration = 5 + Math.random() * 5;
-      snow.style.animationDuration = duration + "s";
+      const duration = 10 + Math.random() * 10;
+      snow.style.animation = `snowfall ${duration}s linear infinite`;
 
       // Atraso inicial aleatório
       snow.style.animationDelay = Math.random() * 5 + "s";
