@@ -19,11 +19,20 @@ export const OrderDetails = ({ orderData }: { orderData: OrderData }) => {
         {orderData?.id}
         <Stack>
           <small>
-            (Acompanhe seu pedido por{" "}
-            <Link component={"a"} href={`/pedidos/${orderData?.id}`}>
-              aqui
-            </Link>
-            )
+            {!orderData?.trackId ? (
+              <>
+                ID Encomenda:{" "}
+                <Link
+                  component={"a"}
+                  href={`http://ctt.pt/t/${orderData.trackId}`}
+                  target={"_blank"}
+                >
+                  {orderData?.trackId}
+                </Link>
+              </>
+            ) : (
+              "Assim que o objeto for postado, receberás o ID da encomenda por e-mail para seguires o envio."
+            )}
           </small>
         </Stack>
       </Typography>

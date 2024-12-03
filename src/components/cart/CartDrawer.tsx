@@ -1,3 +1,4 @@
+import { isAfter, isBefore } from "date-fns";
 import { Link } from "react-router-dom";
 import { formatToEuro } from "../../utils/formatter";
 import {
@@ -32,6 +33,10 @@ import "./styles.scss";
 
 export const CartDrawer = () => {
   const { cartProducts, setCartProducts, totalPrice } = useCartStore();
+  const currentDate = new Date();
+  const onVacation =
+    isAfter(currentDate, new Date("2024-12-07")) &&
+    isBefore(currentDate, new Date("2025-02-01"));
 
   return (
     <SheetContent>
@@ -103,7 +108,25 @@ export const CartDrawer = () => {
       )}
       <SheetFooter>
         <SheetClose asChild>
-          <Link to={cartProducts.length > 0 ? "/checkout" : ""}>
+          {/* desabilitado ate o fim das ferias */}
+          <Link
+            to={onVacation ? "#" : cartProducts.length > 0 ? "/checkout" : ""}
+          >
+            {onVacation && (
+              <Typography
+                sx={{
+                  width: "100%",
+                  color: "black",
+                  textAlign: "center",
+                  border: "1px solid",
+                  borderRadius: "8px",
+                  padding: "8px",
+                }}
+              >
+                Por motivo de férias, estamos com as vendas pausadas até o dia
+                31/01/2025. Desejamos a todos boas festas!
+              </Typography>
+            )}
             <SolidButton
               sx={{
                 margin: 1,
@@ -113,7 +136,8 @@ export const CartDrawer = () => {
                 marginTop: "16px",
               }}
               type="submit"
-              disabled={cartProducts.length === 0}
+              // desabilitado ate o fim das ferias
+              disabled={cartProducts.length === 0 || onVacation}
             >
               Finalizar compra
             </SolidButton>

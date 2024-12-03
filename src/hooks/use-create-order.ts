@@ -12,12 +12,13 @@ export type OrderItem = {
 };
 export type OrderData = {
   addressId: string;
-  created_at: string;
+  createdAt: string;
   id: string;
   orderItems?: OrderItem[];
   payment?: Payment;
   user?: UserData;
   userId: string;
+  trackId?: string;
 };
 
 export type OrderParams = {

@@ -49,7 +49,7 @@ export const NavHeader = () => {
       role="navigation"
       ref={navHeaderRef}
       style={{
-        position: isHomePage ? "fixed" : "relative",
+        position: "relative",
       }}
     >
       <MobileMenu />

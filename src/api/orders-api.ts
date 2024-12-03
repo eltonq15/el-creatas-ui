@@ -19,3 +19,16 @@ export const getOrderById = async (orderId: string): Promise<OrderData> => {
   const res = await fetch(`${process.env.REACT_APP_API_URL}/orders/${orderId}`);
   return await res.json();
 };
+
+export const getOrdersByUserId = async (
+  userId?: string | null
+): Promise<OrderData[]> => {
+  if (!userId) {
+    return Promise.resolve([] as OrderData[]);
+  }
+
+  const res = await fetch(
+    `${process.env.REACT_APP_API_URL}/orders?userId=${userId}`
+  );
+  return await res.json();
+};
