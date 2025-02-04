@@ -16,19 +16,14 @@ import { SignUpPage } from "./pages/sign-up/SignUp";
 import { About } from "./pages/about/about";
 import { Faq } from "./pages/faq/Faq";
 import NotFound from "./pages/not-found/NotFound";
-import { useSnowEffect } from "./hooks/use-snow-effect";
-import SnowEffect from "./components/snow-effect/SnowEffect";
 
 const App: React.FC = () => {
   const { isSnackbarOpen, setIsSnackbarOpen } = useCartStore();
-
-  useSnowEffect();
 
   return (
     <Router>
       <NavHeader />
       <ScrollToTop />
-      <SnowEffect />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignInPage />} />
